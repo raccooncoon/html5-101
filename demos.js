@@ -56,18 +56,26 @@ const DEMOS = {
 </dl>`
   },
   table: {
-    title: "표 + 칸 합치기",
-    note: "colspan은 가로로, rowspan은 세로로 칸을 합칩니다. 제목칸 th에는 scope를 붙여요.",
+    title: "표 구조(thead/tbody/tfoot) + 칸 합치기",
+    note: "표는 머리글 thead · 본문 tbody · 바닥글 tfoot으로 나눕니다. colspan=가로, rowspan=세로 병합, th엔 scope.",
     code:
 `<style>
   table{border-collapse:collapse}
   th,td{border:1px solid #bbb;padding:6px 12px}
-  th{background:#f3f4f6}
+  thead th{background:#0d9488;color:#fff}
+  tfoot td{background:#f3f4f6;font-weight:700}
 </style>
 <table>
-  <tr><th scope="col">이름</th><th scope="col">국어</th><th scope="col">영어</th></tr>
-  <tr><th scope="row">홍길동</th><td>90</td><td>85</td></tr>
-  <tr><td colspan="3">colspan=3 → 세 칸을 하나로</td></tr>
+  <thead>
+    <tr><th scope="col">이름</th><th scope="col">국어</th><th scope="col">영어</th></tr>
+  </thead>
+  <tbody>
+    <tr><th scope="row">홍길동</th><td>90</td><td>85</td></tr>
+    <tr><th scope="row">김영희</th><td>95</td><td>80</td></tr>
+  </tbody>
+  <tfoot>
+    <tr><td colspan="3">평균 87.5점 (colspan=3 → 세 칸 합침)</td></tr>
+  </tfoot>
 </table>`
   },
 
@@ -168,7 +176,59 @@ const DEMOS = {
 <p><input required placeholder="필수 입력칸"></p>`
   },
 
+  checked: {
+    title: ":checked + :not() (JS 없는 토글)",
+    note: "체크됐을 때만 적용되는 :checked로 스위치를 만들고, :not()으로 '~가 아닌' 것을 고릅니다.",
+    code:
+`<style>
+  .sw{display:inline-flex;align-items:center;gap:10px;cursor:pointer}
+  .sw input{display:none}
+  .track{width:52px;height:28px;background:#ccc;border-radius:999px;
+         position:relative;transition:.25s}
+  .track::after{content:"";position:absolute;top:3px;left:3px;
+         width:22px;height:22px;background:#fff;border-radius:50%;transition:.25s}
+  .sw input:checked + .track{background:#0d9488}     /* 켜졌을 때 */
+  .sw input:checked + .track::after{left:27px}
+  li:not(.done){color:#e8552f}                       /* done이 '아닌' 항목 */
+</style>
+<label class="sw">
+  <input type="checkbox"><span class="track"></span>
+  <span>클릭해서 켜고 끄기</span>
+</label>
+<ul>
+  <li class="done">완료된 일 (검정)</li>
+  <li>아직 안 한 일 → :not(.done)로 주황</li>
+</ul>`
+  },
+
   /* ---- 06 텍스트 ---- */
+  fontfamily: {
+    title: "글꼴(font-family)과 웹폰트",
+    note: "글꼴은 쉼표로 '폴백'을 나열해요. 원하는 글꼴이 없으면 다음 글꼴로 넘어갑니다. 웹폰트는 @font-face로 .woff2를 불러옵니다.",
+    code:
+`<style>
+  p{margin:6px 0;font-size:18px}
+  .sys  { font-family: system-ui, sans-serif } /* OS 기본 */
+  .serif{ font-family: Georgia, serif }        /* 삐침 있음 */
+  .mono { font-family: monospace }             /* 고정폭(코드용) */
+</style>
+<p class="sys">system-ui — 운영체제 기본 글꼴</p>
+<p class="serif">Georgia / serif — 획에 삐침</p>
+<p class="mono">monospace — 글자폭이 일정</p>`
+  },
+  letterspacing: {
+    title: "letter-spacing (자간)",
+    note: "한글은 자간을 살짝(-0.02em) 좁히면 더 단정해 보입니다.",
+    code:
+`<style>
+  p{font-size:19px;margin:6px 0}
+  .tight{letter-spacing:-0.02em}
+  .wide{letter-spacing:0.15em}
+</style>
+<p>기본 자간 — 한국어 본문 예시입니다.</p>
+<p class="tight">-0.02em — 살짝 좁혀 단정합니다.</p>
+<p class="wide">0.15em — 넓혀서 강조 느낌.</p>`
+  },
   lineheight: {
     title: "line-height (줄 간격)",
     note: "줄 간격이 좁으면 답답하고, 1.6 정도면 읽기 편해요. 한글 본문은 보통 1.5~1.8.",
@@ -223,6 +283,25 @@ const DEMOS = {
   <div class="circle"></div>
 </div>`
   },
+  bgoverlay: {
+    title: "배경 이미지 + 그라데이션 오버레이",
+    note: "밝은 사진 위에 반투명 검은 막(linear-gradient)을 겹치면 흰 글씨가 또렷해져요. background-size:cover로 빈틈없이 채웁니다.",
+    code:
+`<style>
+  .hero{
+    height:140px;border-radius:12px;padding:12px;
+    display:grid;place-items:center;text-align:center;
+    color:#fff;font-weight:800;font-size:19px;
+    background:
+      /* ① 위에 깔리는 어두운 막 */
+      linear-gradient(rgba(0,0,0,.55), rgba(0,0,0,.2)),
+      /* ② 실제로는 여기에 url('photo.jpg') */
+      linear-gradient(135deg,#f6d365,#fda085);
+    background-size: cover;   /* 빈틈없이 꽉 채움 */
+  }
+</style>
+<div class="hero">사진 위 어두운 막 덕분에<br>글씨가 잘 보입니다</div>`
+  },
   position: {
     title: "position — '품절' 배지",
     note: "부모에 relative, 자식에 absolute를 주면 카드 안에서 자유롭게 배치돼요(예: 우상단 배지).",
@@ -256,6 +335,22 @@ const DEMOS = {
 </div>`
   },
 
+  /* ---- 08 display·Flex·Grid ---- */
+  displaynone: {
+    title: "display 종류 + none vs visibility",
+    note: "block=한 줄 차지, inline=내용만큼. display:none은 공간까지 사라지고, visibility:hidden은 안 보여도 자리는 남아요.",
+    code:
+`<style>
+  .box{background:#0d9488;color:#fff;padding:8px;margin:4px;border-radius:6px}
+  .gone{display:none}            /* 공간까지 제거 */
+  .invisible{visibility:hidden}  /* 안 보여도 자리 유지 */
+</style>
+<div class="box">1) 보통 박스 (block)</div>
+<div class="box gone">2) display:none</div>
+<div class="box">3) ↑ 2번이 통째로 사라져 바로 붙었어요</div>
+<div class="box invisible">4) visibility:hidden</div>
+<div class="box">5) ↑ 4번은 안 보여도 빈 자리가 남아요</div>`
+  },
   /* ---- 08 Flex·Grid ---- */
   flex: {
     title: "Flexbox (1차원 정렬)",
@@ -306,6 +401,28 @@ const DEMOS = {
   .box:hover{transform:scale(1.2) rotate(8deg);background:#e8552f}
 </style>
 <div class="box">올려봐</div>`
+  },
+  flip: {
+    title: "카드 뒤집기 (backface-visibility)",
+    note: "마우스를 올리면 뒤집혀요. backface-visibility:hidden이 '뒷모습'을 가려, 반대 면이 비쳐 보이지 않게 합니다.",
+    code:
+`<style>
+  .scene{width:170px;height:104px;perspective:600px}
+  .card{width:100%;height:100%;position:relative;cursor:pointer;
+        transition:transform .6s;transform-style:preserve-3d}
+  .scene:hover .card{transform:rotateY(180deg)}
+  .face{position:absolute;inset:0;border-radius:12px;
+        display:grid;place-items:center;color:#fff;font-weight:700;
+        backface-visibility:hidden}     /* 뒷면 가리기 */
+  .front{background:#0d9488}
+  .back{background:#e8552f;transform:rotateY(180deg)}
+</style>
+<div class="scene">
+  <div class="card">
+    <div class="face front">앞면 · 올려보세요</div>
+    <div class="face back">뒷면!</div>
+  </div>
+</div>`
   },
   keyframes: {
     title: "@keyframes (무한 애니메이션)",

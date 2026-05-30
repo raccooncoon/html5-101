@@ -76,5 +76,29 @@ const QUIZ = [
     options: ["overflow: hidden", "break-inside: avoid", "page-break: always", "column-fill: balance"],
     answer: 1,
     explain: "자식 요소에 break-inside: avoid;를 주면 단 경계에서 분리되지 않습니다."
+  },
+  {
+    q: "주소창에 URL을 입력했을 때, 그 주소가 어느 서버인지 찾아주는 단계는?",
+    options: ["렌더링", "DNS 조회", "파싱", "캐싱"],
+    answer: 1,
+    explain: "URL → DNS 조회(주소 찾기) → 서버 요청 → HTML/CSS/JS 응답 → 브라우저 파싱·렌더링 순서로 동작합니다."
+  },
+  {
+    q: "요소를 화면에서 숨기면서 '차지하던 공간까지' 없애려면?",
+    options: ["visibility: hidden", "opacity: 0", "display: none", "overflow: hidden"],
+    answer: 2,
+    explain: "display:none은 공간까지 완전히 제거합니다. visibility:hidden/opacity:0은 안 보여도 자리는 그대로 남습니다."
+  },
+  {
+    q: "웹폰트를 불러올 때 용량·성능을 위해 권장되는 형식과 규칙은?",
+    options: ["@import 로 .ttf", "@font-face 로 .woff2", "<font> 태그", "src 로 .psd"],
+    answer: 1,
+    explain: "@font-face 규칙으로 글꼴을 등록하며, 압축률이 좋은 .woff2 형식을 권장합니다."
+  },
+  {
+    q: "카드 뒤집기(3D rotateY) 애니메이션에서 반대 면이 비쳐 보이지 않게 하는 속성은?",
+    options: ["overflow: hidden", "backface-visibility: hidden", "opacity: 0", "z-index: -1"],
+    answer: 1,
+    explain: "backface-visibility: hidden은 회전된 면의 뒷모습을 가려, 뒤집을 때 반대 면이 비치지 않게 합니다."
   }
 ];

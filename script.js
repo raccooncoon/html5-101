@@ -74,7 +74,6 @@
     const frame = document.createElement("iframe");
     frame.className = "ld-frame";
     frame.setAttribute("sandbox", "allow-same-origin"); // 스크립트 없음 → 높이 측정만
-    frame.setAttribute("loading", "lazy");
     frame.title = demo.title + " 예시";
     card.appendChild(frame);
 
