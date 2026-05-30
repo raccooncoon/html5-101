@@ -3,15 +3,14 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="HTML5와 CSS를 빠르게 학습하는 한국어 강의 페이지. 9개 강의록 + 시험 정리 + 인터랙티브 퀴즈.">
-  <title>HTML5 &amp; CSS 101 — 빠른 학습 노트</title>
+  <meta name="description" content="HTML5와 CSS를 가장 쉽게 배우는 한국어 강의. 개념마다 바로 확인하는 라이브 예시 + 직접 고쳐보는 코드 놀이터 + 시험 정리 + 퀴즈.">
+  <title>HTML5 &amp; CSS 101 — 가장 쉬운 학습 노트</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600&family=Noto+Sans+KR:wght@400;500;700;900&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-  <!-- 읽기 진행률 표시줄 -->
   <div class="progress-bar" id="progressBar" aria-hidden="true"></div>
 
   <header class="site-header">
@@ -28,7 +27,6 @@
   </header>
 
   <div class="layout" id="top">
-    <!-- 좌측 목차 (sticky 데모이기도 함) -->
     <aside class="sidebar" aria-label="목차">
       <p class="side-title">목차</p>
       <nav id="toc">
@@ -39,9 +37,10 @@
         <a href="#sec04" class="toc-link">04 · 웹 폼 &amp; 입력</a>
         <a href="#sec05" class="toc-link">05 · 선택자 &amp; 우선순위</a>
         <a href="#sec06" class="toc-link">06 · 텍스트 최적화</a>
-        <a href="#sec07" class="toc-link">07 · 배경·박스·레이아웃</a>
+        <a href="#sec07" class="toc-link">07 · 배경·박스·position</a>
         <a href="#sec08" class="toc-link">08 · Flex &amp; Grid</a>
         <a href="#sec09" class="toc-link">09 · 애니메이션·다단</a>
+        <a href="#playground" class="toc-link toc-play">🧪 코드 놀이터</a>
         <a href="#exam" class="toc-link toc-exam">⭐ 시험 정리</a>
         <a href="#quiz" class="toc-link toc-quiz">📝 퀴즈 풀기</a>
       </nav>
@@ -51,210 +50,221 @@
       <!-- HERO -->
       <section id="intro" class="hero">
         <p class="eyebrow">웹 프론트엔드 기초 · 강의록 01~09</p>
-        <h1 class="hero-title">HTML5 &amp; CSS를<br>빠르게 정복하는 학습 노트</h1>
+        <h1 class="hero-title">HTML &amp; CSS,<br>예시를 보면서 쉽게 배우기</h1>
         <p class="hero-lead">
-          시멘틱 마크업부터 Flex·Grid 레이아웃, 애니메이션까지 — 실무 표준과 웹 접근성 관점으로 정리했습니다.
-          끝까지 읽고 <a href="#quiz">퀴즈</a>로 점검하세요. 이 페이지 자체가 배운 개념(시멘틱 태그·sticky·Grid)으로 만들어졌습니다.
+          어려운 용어는 풀어 쓰고, <b>개념마다 "바로 보이는" 라이브 예시</b>를 붙였습니다.
+          코드와 그 결과가 나란히 나오니, 읽고 → 보고 → <a href="#playground">직접 고쳐보면</a> 머리에 남습니다.
         </p>
-        <div class="hero-stats">
-          <div class="stat"><strong>9</strong><span>강의록</span></div>
-          <div class="stat"><strong>40+</strong><span>핵심 개념</span></div>
-          <div class="stat"><strong>12</strong><span>퀴즈 문항</span></div>
+        <div class="analogy">
+          <div class="ana"><span>🏗️</span><b>HTML</b><p>건물의 <u>뼈대·구조</u><br>(제목, 문단, 버튼…)</p></div>
+          <div class="ana"><span>🎨</span><b>CSS</b><p>건물의 <u>인테리어</u><br>(색, 크기, 배치…)</p></div>
+          <div class="ana"><span>🏷️</span><b>시멘틱</b><p>방마다 <u>이름표</u> 달기<br>(머리말·본문·메뉴…)</p></div>
         </div>
         <div class="hero-cta">
           <a class="btn primary" href="#sec01">학습 시작 →</a>
-          <a class="btn" href="#exam">시험 정리 보기</a>
+          <a class="btn" href="#playground">🧪 코드 놀이터</a>
+          <a class="btn" href="#exam">시험 정리</a>
         </div>
       </section>
 
       <!-- 01 -->
       <section id="sec01" class="lesson">
-        <div class="lesson-head"><span class="num">01</span><h2>HTML 문서 구조와 텍스트 표현</h2></div>
-
-        <h3>기본 문서 템플릿</h3>
-        <p><code>&lt;!DOCTYPE html&gt;</code>로 시작해 <b>표준 모드</b> 렌더링을 보장합니다. <code>&lt;html&gt;</code>에는 스크린 리더·검색엔진을 위해 <code>lang="ko"</code>를 필수로 넣습니다. <code>&lt;head&gt;</code>에는 메타데이터(<code>charset</code>, <code>viewport</code>)와 CSS/JS 링크가, 실제 화면 내용은 <code>&lt;body&gt;</code>에 들어갑니다.</p>
-        <pre><code>&lt;!DOCTYPE html&gt;
-&lt;html lang="ko"&gt;
-  &lt;head&gt;
+        <div class="lesson-head"><span class="num">01</span><h2>HTML 문서 구조와 텍스트</h2></div>
+        <p class="lead-easy">HTML 문서는 정해진 "기본 틀"로 시작해요. 이 틀이 브라우저에게 "나는 표준 규격을 지키는 한국어 페이지야"라고 알려줍니다.</p>
+        <pre><code>&lt;!DOCTYPE html&gt;            &lt;!-- "표준 규격" 선언 --&gt;
+&lt;html lang="ko"&gt;          &lt;!-- 한국어 페이지 --&gt;
+  &lt;head&gt;                  &lt;!-- 화면엔 안 보이는 정보(제목·인코딩) --&gt;
     &lt;meta charset="UTF-8"&gt;
-    &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
-    &lt;title&gt;문서 제목&lt;/title&gt;
+    &lt;title&gt;페이지 제목&lt;/title&gt;
   &lt;/head&gt;
-  &lt;body&gt;&lt;!-- 보이는 내용 --&gt;&lt;/body&gt;
+  &lt;body&gt; 실제 보이는 내용 &lt;/body&gt;
 &lt;/html&gt;</code></pre>
 
-        <h3>텍스트 마크업 규칙</h3>
-        <ul class="rich">
-          <li><b>헤딩 <code>h1~h6</code></b>: 문서 구조·목차를 만듭니다. <code>h1</code>은 페이지당 1개, 숫자를 건너뛰지 않고 순차 사용. <strong>폰트 크기 키우려고 쓰면 안 됩니다</strong> — 크기는 CSS로.</li>
-          <li><b>단락·줄바꿈</b>: 단락은 <code>&lt;p&gt;</code>, 문단 여백은 CSS로. <code>&lt;br&gt;</code> 연타로 여백 만들기 금지. 주소·시처럼 줄바꿈이 의미일 때만 <code>&lt;br&gt;</code>.</li>
-          <li><b>물리적 vs 논리적</b>: <code>&lt;b&gt;</code>보다 의미 강조 <code>&lt;strong&gt;</code>, <code>&lt;i&gt;</code>보다 <code>&lt;em&gt;</code>가 접근성 표준.</li>
-        </ul>
-        <div class="callout tip"><b>블록 vs 인라인</b> — 한 줄을 다 차지하는 블록(<code>div, p, h1</code>) vs 내용만큼만 차지하는 인라인(<code>span, a, img</code>). 의미 없는 <code>div</code> 남용은 피하세요.</div>
+        <h3>제목(헤딩)은 "글자 크기"가 아니라 "목차 단계"</h3>
+        <p>h1~h6은 책의 목차 같은 거예요. h1은 책 제목(페이지당 <b>1개</b>), h2는 챕터… 순서대로 씁니다. "글자를 크게 하고 싶어서" h1을 쓰면 안 돼요. 크기는 CSS로 바꿉니다.</p>
+        <div class="demo-mount" data-demo="headings"></div>
+
+        <h3>strong/em vs b/i — 보긴 같아도 "의미"가 달라요</h3>
+        <p><code>&lt;strong&gt;</code>·<code>&lt;em&gt;</code>은 "중요/강조"라는 <b>뜻</b>이 담겨 스크린리더가 톤을 다르게 읽어줍니다. <code>&lt;b&gt;</code>·<code>&lt;i&gt;</code>는 그냥 모양만 바꿉니다. 의미가 있으면 strong/em을 쓰세요.</p>
+        <div class="demo-mount" data-demo="emphasis"></div>
+
+        <h3>블록 vs 인라인 — 줄을 다 차지하나, 글자만큼만 차지하나</h3>
+        <p>블록 요소(<code>div, p, h1</code>)는 한 줄을 통째로 먹어서 위→아래로 쌓이고, 인라인 요소(<code>span, a, img</code>)는 글자 크기만큼만 차지해 옆으로 붙습니다.</p>
+        <div class="demo-mount" data-demo="blockinline"></div>
+        <div class="callout tip"><b>줄바꿈·여백 팁</b> — 문단은 <code>&lt;p&gt;</code>로 묶고, 문단 사이 간격은 CSS로. <code>&lt;br&gt;</code>을 여러 번 눌러 여백 만들기는 금지예요(주소·시처럼 줄바꿈이 의미일 때만 사용).</div>
       </section>
 
       <!-- 02 -->
       <section id="sec02" class="lesson">
-        <div class="lesson-head"><span class="num">02</span><h2>리스트, 이미지, 링크, 테이블</h2></div>
-        <h3>리스트</h3>
-        <p>순서 없는 <code>&lt;ul&gt;</code>, 순서 있는 <code>&lt;ol&gt;</code>(<code>start</code>, <code>type</code> 활용). '키:값'/용어-설명 구조는 <code>&lt;dl&gt;&lt;dt&gt;&lt;dd&gt;</code> 세트로 — 스크린 리더 이해도가 올라갑니다.</p>
-        <pre><code>&lt;dl&gt;
-  &lt;dt&gt;프로세서&lt;/dt&gt;&lt;dd&gt;인텔 Core i7&lt;/dd&gt;
-  &lt;dt&gt;메모리&lt;/dt&gt;&lt;dd&gt;16GB&lt;/dd&gt;
-&lt;/dl&gt;</code></pre>
-        <h3>이미지 · 링크</h3>
+        <div class="lesson-head"><span class="num">02</span><h2>리스트, 이미지, 링크, 표</h2></div>
+        <h3>리스트 3형제</h3>
+        <p>순서가 <b>없으면</b> <code>&lt;ul&gt;</code>(점), <b>있으면</b> <code>&lt;ol&gt;</code>(번호), '용어 : 설명' 짝이면 <code>&lt;dl&gt;</code>을 씁니다.</p>
+        <div class="demo-mount" data-demo="lists"></div>
+
+        <h3>이미지와 링크의 필수 매너</h3>
         <ul class="rich">
-          <li><b>이미지</b>: <code>src</code>와 함께 <code>alt</code> <strong>필수</strong>. 장식용이면 <code>alt=""</code>로 비워 리더기가 무시하게 합니다.</li>
-          <li><b>링크</b>: <code>target="_blank"</code>로 새 창 열 땐 보안상 <code>rel="noopener noreferrer"</code>를 함께. 페이지 내 이동은 목적지에 <code>id</code>, <code>&lt;a href="#아이디"&gt;</code>로 연결.</li>
+          <li><b>이미지엔 <code>alt</code> 필수</b> — 그림이 안 떠도, 눈이 불편한 분도 내용을 알 수 있게 설명을 적습니다. 순수 장식용이면 <code>alt=""</code>로 비워 리더기가 건너뛰게 해요.</li>
+          <li><b>새 창 링크엔 안전장치</b> — <code>target="_blank"</code>로 새 창을 열 땐 <code>rel="noopener noreferrer"</code>를 꼭 붙입니다(보안).</li>
         </ul>
-        <h3>테이블</h3>
-        <p><b>표 형태 데이터에만</b> 사용(레이아웃용 금지). 접근성을 위해 <code>th</code>에 <code>scope="col"/"row"</code>, 병합은 <code>colspan</code>(가로)·<code>rowspan</code>(세로).</p>
-        <table class="demo-table">
-          <caption>예: scope와 병합</caption>
-          <thead><tr><th scope="col">항목</th><th scope="col">값</th></tr></thead>
-          <tbody>
-            <tr><th scope="row">CPU</th><td>i7</td></tr>
-            <tr><th scope="row">RAM</th><td>16GB</td></tr>
-          </tbody>
-        </table>
+        <pre><code>&lt;img src="cat.jpg" alt="잠자는 고양이"&gt;
+&lt;a href="https://example.com" target="_blank" rel="noopener noreferrer"&gt;새 창으로&lt;/a&gt;</code></pre>
+
+        <h3>표(table) — 칸 합치기와 접근성</h3>
+        <p>표는 <b>표 형태의 데이터</b>에만 씁니다(레이아웃용 금지). 제목칸 <code>th</code>에는 <code>scope</code>를, 칸을 합칠 땐 <code>colspan</code>(가로)·<code>rowspan</code>(세로)을 씁니다.</p>
+        <div class="demo-mount" data-demo="table"></div>
       </section>
 
       <!-- 03 -->
       <section id="sec03" class="lesson">
-        <div class="lesson-head"><span class="num">03</span><h2>미디어 요소와 시멘틱 마크업</h2></div>
-        <h3>미디어</h3>
-        <p><code>&lt;video&gt;</code>·<code>&lt;audio&gt;</code>는 <code>controls</code>, <code>autoplay</code>, <code>muted</code> 속성을 씁니다. 자막은 미디어 안에 <code>&lt;track src="파일.vtt" kind="subtitles"&gt;</code>를 추가해 접근성을 높입니다.</p>
-        <h3>시멘틱 태그</h3>
-        <div class="tag-grid">
-          <div class="tag-card"><code>header</code><code>footer</code><p>머리말 / 꼬리말 영역</p></div>
-          <div class="tag-card"><code>nav</code><p>핵심 내비게이션 메뉴</p></div>
-          <div class="tag-card"><code>main</code><p>본문. 문서에 <b>단 하나</b></p></div>
-          <div class="tag-card"><code>section</code><p>주제별 구역, 보통 헤딩 포함</p></div>
-          <div class="tag-card"><code>article</code><p>독립 배포 가능한 완결 글(기사·포스트·댓글)</p></div>
-          <div class="tag-card"><code>aside</code><p>본문과 간접 관련된 보조 콘텐츠</p></div>
-        </div>
-        <div class="callout tip"><b>UI 요소</b> — 아코디언 <code>details/summary</code>, 진행률 <code>progress</code>, 정적 측정값 <code>meter</code>(디스크 사용량 등).</div>
-        <details class="demo-accordion">
-          <summary>details/summary 실제 동작 예시 (클릭)</summary>
-          <p>이렇게 펼쳐지는 아코디언이 JS 없이 만들어집니다.</p>
-        </details>
+        <div class="lesson-head"><span class="num">03</span><h2>미디어와 시멘틱 마크업</h2></div>
+        <h3>동영상·소리</h3>
+        <p><code>&lt;video&gt;</code>·<code>&lt;audio&gt;</code>에 <code>controls</code>(재생바), <code>autoplay</code>(자동재생), <code>muted</code>(음소거)를 붙여요. 자막은 안에 <code>&lt;track kind="subtitles"&gt;</code>를 넣습니다.</p>
+        <pre><code>&lt;video src="movie.mp4" controls muted&gt;
+  &lt;track src="ko.vtt" kind="subtitles" srclang="ko" label="한국어"&gt;
+&lt;/video&gt;</code></pre>
+
+        <h3>시멘틱 태그 = div에 "이름표" 붙이기</h3>
+        <p>똑같은 박스라도 <code>&lt;div&gt;</code>는 "무슨 박스인지" 모릅니다. 대신 <code>header</code>(머리말)·<code>nav</code>(메뉴)·<code>main</code>(본문, <b>딱 하나</b>)·<code>section</code>(주제 구역)·<code>article</code>(독립된 글)·<code>footer</code>(꼬리말)처럼 이름이 있는 태그를 쓰면 검색엔진·스크린리더가 구조를 이해합니다.</p>
+        <div class="demo-mount" data-demo="semantic"></div>
+        <p class="mini"><b>section vs article</b> — section은 "주제로 묶은 구역", article은 "그것만 떼어내도 말이 되는 완결된 글"(기사·블로그 글·댓글 하나).</p>
+
+        <h3>자바스크립트 없이 쓰는 기본 UI</h3>
+        <p>아코디언(<code>details/summary</code>), 진행률(<code>progress</code>), 측정값(<code>meter</code>)은 JS 없이도 동작합니다.</p>
+        <div class="demo-mount" data-demo="uiElements"></div>
       </section>
 
       <!-- 04 -->
       <section id="sec04" class="lesson">
         <div class="lesson-head"><span class="num">04</span><h2>웹 폼과 입력 요소</h2></div>
-        <p><b>데이터 통신 본부 <code>&lt;form&gt;</code></b>: <code>action</code>(전송 주소), <code>method</code>(GET/POST)로 서버와 연결합니다.</p>
-        <ul class="rich">
-          <li><b>입력 타입</b>: <code>text·password·number·date·file·checkbox·radio</code> 등 데이터 종류에 맞게 — 모바일에서 알맞은 키보드가 뜹니다. (checkbox=다중, radio=단일)</li>
-          <li><b>긴 글</b> <code>&lt;textarea&gt;</code>, <b>드롭다운</b> <code>&lt;select&gt;+&lt;option&gt;</code>.</li>
-          <li><b>접근성 핵심 <code>&lt;label&gt;</code></b>: <code>for</code>와 <code>id</code>를 일치시켜 글씨 클릭으로도 입력창이 활성화 — 클릭 영역 확대 + 리더 지원.</li>
-          <li><b><code>fieldset</code>+<code>legend</code></b>: 라디오/체크박스 묶음을 박스로 묶고 그룹 제목을 달아 맥락 전달.</li>
-        </ul>
-        <pre><code>&lt;label for="email"&gt;이메일&lt;/label&gt;
-&lt;input id="email" type="email" required&gt;</code></pre>
+        <p class="lead-easy"><code>&lt;form&gt;</code>은 사용자가 입력한 값을 서버로 보내는 "데이터 우체통"이에요. <code>action</code>(보낼 주소)과 <code>method</code>(GET/POST)를 정합니다.</p>
+
+        <h3>입력 타입을 잘 고르면 모바일 키보드가 바뀐다</h3>
+        <p><code>type</code>을 데이터에 맞게 고르면(<code>email, number, date, password, file, checkbox, radio</code>) 휴대폰에서 알맞은 키보드가 떠요. (checkbox=여러 개, radio=하나만)</p>
+        <h3>label은 클릭 영역을 넓혀주는 친구</h3>
+        <p><code>&lt;label&gt;</code>의 <code>for</code>와 입력칸의 <code>id</code>를 같게 하면, <b>글씨만 클릭해도</b> 입력칸이 활성화됩니다. 아래에서 직접 글씨를 눌러보세요.</p>
+        <div class="demo-mount" data-demo="formLabel"></div>
+
+        <h3>관련 항목은 fieldset으로 묶기</h3>
+        <p>라디오·체크박스처럼 한 묶음인 항목은 <code>&lt;fieldset&gt;</code>으로 감싸고 <code>&lt;legend&gt;</code>로 그룹 제목을 답니다.</p>
+        <div class="demo-mount" data-demo="fieldset"></div>
       </section>
 
       <!-- 05 -->
       <section id="sec05" class="lesson">
         <div class="lesson-head"><span class="num">05</span><h2>CSS 선택자와 우선순위</h2></div>
-        <p><b>설계 원칙</b>: 포괄적 요소명(<code>p</code>)이나 재사용 어려운 <code>#id</code>보다 <strong><code>.class</code> 중심 모듈화</strong>가 유지보수에 유리합니다.</p>
-        <h3>명시도(우선순위) 점수</h3>
-        <table class="demo-table">
-          <thead><tr><th scope="col">우선</th><th scope="col">대상</th><th scope="col">점수</th></tr></thead>
-          <tbody>
-            <tr><td>1 (최강)</td><td><code>!important</code></td><td>강제 (사용 지양)</td></tr>
-            <tr><td>2</td><td>인라인 스타일</td><td>1000</td></tr>
-            <tr><td>3</td><td><code>#id</code></td><td>100</td></tr>
-            <tr><td>4</td><td><code>.class</code> / 가상클래스</td><td>10</td></tr>
-            <tr><td>5</td><td>태그</td><td>1</td></tr>
-            <tr><td>6</td><td><code>*</code></td><td>0</td></tr>
-          </tbody>
-        </table>
-        <h3>결합자 &amp; 가상 클래스</h3>
-        <ul class="rich">
-          <li><code>A &gt; B</code> 직계 자식 · <code>A B</code> 모든 자손 · <code>A + B</code> 바로 뒤 형제 · <code>A ~ B</code> 뒤 모든 형제</li>
-          <li><code>:hover</code> 마우스 오버 · <code>:focus-visible</code> 탭 키 이동 시만 테두리 · <code>:required</code> 필수 입력창</li>
-        </ul>
+        <p class="lead-easy">선택자는 "누구를 꾸밀지" 고르는 방법이에요. 실무에선 재사용하기 좋은 <code>.class</code>를 중심으로 설계합니다(<code>#id</code>는 너무 강하고, 태그명은 너무 광범위).</p>
+
+        <h3>같은 곳에 색을 여러 번 지정하면, 누가 이길까?</h3>
+        <p>점수가 높은 규칙이 이깁니다: <b>인라인(1000) &gt; #id(100) &gt; .class(10) &gt; 태그(1)</b>. 아래는 한 글자에 3번 색을 줬을 때 id가 이기는 예시예요.</p>
+        <div class="demo-mount" data-demo="specificity"></div>
+        <div class="callout warn"><code>!important</code>는 이 모든 걸 무시하는 "반칙기"예요. 꼬임의 원인이 되니 <b>되도록 쓰지 마세요.</b></div>
+
+        <h3>결합자 — 위치로 콕 집기</h3>
+        <p><code>A &gt; B</code> 바로 아래 자식만 · <code>A B</code>(공백) 모든 자손 · <code>A + B</code> 바로 뒤 형제 · <code>A ~ B</code> 뒤따르는 모든 형제.</p>
+        <div class="demo-mount" data-demo="combinator"></div>
+
+        <h3>가상 클래스 — "이럴 때만" 스타일</h3>
+        <p><code>:hover</code>(마우스 올림), <code>:focus-visible</code>(탭 키로 이동했을 때만 테두리), <code>:required</code>(필수 입력칸).</p>
+        <div class="demo-mount" data-demo="pseudo"></div>
       </section>
 
       <!-- 06 -->
       <section id="sec06" class="lesson">
-        <div class="lesson-head"><span class="num">06</span><h2>CSS 텍스트 최적화</h2></div>
-        <h3>한국어 가독성 세팅</h3>
-        <ul class="rich">
-          <li><code>line-height</code>는 상속 꼬임 방지를 위해 <strong>단위 없는 숫자</strong>(1.5~1.6)로.</li>
-          <li><code>word-break: keep-all;</code> 한글 단어 중간 줄바꿈 방지 + <code>overflow-wrap: break-word;</code> 긴 영어/URL 박스 탈출 방지.</li>
-        </ul>
-        <h3>말줄임표(…) 공식</h3>
-        <pre><code>.ellipsis {
-  white-space: nowrap;     /* 한 줄 고정 */
-  overflow: hidden;        /* 넘침 숨김 */
-  text-overflow: ellipsis; /* … 표시 */
-}</code></pre>
-        <div class="callout tip"><code>text-wrap: balance;</code> — 여러 줄 제목이 균형 있게 줄바꿈되도록 자동 조절.</div>
+        <div class="lesson-head"><span class="num">06</span><h2>CSS 텍스트 최적화 (한국어)</h2></div>
+
+        <h3>줄 간격 line-height</h3>
+        <p>줄 간격은 <b>단위 없는 숫자</b>(1.5~1.8)로 줍니다. 단위를 빼야 글자 크기에 맞춰 비례하고 상속 꼬임이 안 생겨요.</p>
+        <div class="demo-mount" data-demo="lineheight"></div>
+
+        <h3>한글 줄바꿈 word-break: keep-all</h3>
+        <p>기본값은 한글을 글자 단위로 어색하게 자릅니다. <code>keep-all</code>을 주면 단어 단위로 끊겨요. (긴 영어/URL이 칸을 뚫는 건 <code>overflow-wrap: break-word</code>로 방지)</p>
+        <div class="demo-mount" data-demo="wordbreak"></div>
+
+        <h3>말줄임표(…) 공식 — 3개 모두 필요</h3>
+        <p>하나라도 빠지면 작동 안 해요: <code>white-space:nowrap</code> + <code>overflow:hidden</code> + <code>text-overflow:ellipsis</code>.</p>
+        <div class="demo-mount" data-demo="ellipsis"></div>
+        <div class="callout tip"><code>text-wrap: balance;</code> — 여러 줄 제목의 줄 길이를 자동으로 균형 있게 맞춰줍니다(이 페이지 큰 제목에 적용돼 있어요).</div>
       </section>
 
       <!-- 07 -->
       <section id="sec07" class="lesson">
-        <div class="lesson-head"><span class="num">07</span><h2>배경, 박스 모델, 레이아웃(position)</h2></div>
-        <h3>배경 · 모서리 · 그림자</h3>
+        <div class="lesson-head"><span class="num">07</span><h2>배경, 박스, 위치(position)</h2></div>
+
+        <h3>둥근 모서리·그림자·원 만들기</h3>
+        <p><code>border-radius</code>로 모서리를 둥글게(<code>50%</code>면 완전한 원), <code>box-shadow</code>로 떠 보이는 입체감을 줍니다.</p>
+        <div class="demo-mount" data-demo="boxstyle"></div>
+
+        <h3>position — 가장 헷갈리는 부분, 예시로 끝내기</h3>
         <ul class="rich">
-          <li>가독성용으로 <code>linear-gradient</code> 반투명 막 + 그 아래 <code>url()</code> 이미지를 겹치는 기법. <code>background-size: cover;</code>는 빈틈없이 꽉 채움.</li>
-          <li><code>border-radius: 50%</code> 완벽한 원, <code>box-shadow</code> 입체감. <code>outline</code>은 물리적 크기를 차지하지 않는 외곽선(접근성용).</li>
+          <li><code>relative</code>: 원래 자리를 지키면서 살짝 이동. 주로 <code>absolute</code> 자식의 <b>기준점</b> 역할.</li>
+          <li><code>absolute</code>: 공중에 떠서, 가장 가까운 <code>relative</code> 부모를 기준으로 배치(예: 카드 우상단 배지).</li>
+          <li><code>fixed</code>/<code>sticky</code>: 스크롤해도 화면/영역에 고정.</li>
         </ul>
-        <h3>position</h3>
-        <table class="demo-table">
-          <thead><tr><th scope="col">값</th><th scope="col">동작</th></tr></thead>
-          <tbody>
-            <tr><th scope="row">relative</th><td>원래 자리 유지하며 이동. <code>absolute</code> 자식의 기준 뼈대</td></tr>
-            <tr><th scope="row">absolute</th><td>떠서 가장 가까운 <code>relative</code> 부모 기준 배치(예: '품절' 배지)</td></tr>
-            <tr><th scope="row">fixed / sticky</th><td>스크롤해도 화면에 고정되는 헤더·메뉴</td></tr>
-          </tbody>
-        </table>
+        <p>"품절 배지"는 position의 대표 예시예요 — 부모 relative + 자식 absolute:</p>
+        <div class="demo-mount" data-demo="position"></div>
+        <p>sticky는 스크롤해도 위에 붙어 따라옵니다(박스 안을 스크롤해보세요):</p>
+        <div class="demo-mount" data-demo="sticky"></div>
       </section>
 
       <!-- 08 -->
       <section id="sec08" class="lesson">
         <div class="lesson-head"><span class="num">08</span><h2>Flexbox &amp; Grid</h2></div>
-        <div class="split">
-          <div class="split-card">
-            <h3>Flex — 1차원</h3>
-            <p>가로 또는 세로 한 방향 배치. <code>justify-content</code>(주축 정렬), <code>align-items</code>(교차축 정렬).</p>
-            <div class="flex-demo"><span>1</span><span>2</span><span>3</span></div>
-            <pre><code>display: flex;
-justify-content: space-between;
-align-items: center;</code></pre>
-          </div>
-          <div class="split-card">
-            <h3>Grid — 2차원</h3>
-            <p>행·열 동시 배치. <code>grid-template-areas</code>로 구역에 이름을 붙여 직관적으로 뼈대 설계.</p>
-            <div class="grid-demo">
-              <span class="g-h">header</span>
-              <span class="g-m">main</span>
-              <span class="g-a">aside</span>
-              <span class="g-f">footer</span>
-            </div>
-          </div>
-        </div>
+        <p class="lead-easy">요소를 정렬·배치하는 두 도구예요. <b>Flex는 1차원</b>(한 줄을 가로 또는 세로로), <b>Grid는 2차원</b>(행+열 격자). 한 줄 정렬엔 Flex, 페이지 전체 뼈대엔 Grid가 편합니다.</p>
+
+        <h3>Flex — 한 줄 정렬의 끝판왕</h3>
+        <p><code>justify-content</code>=가로 정렬, <code>align-items</code>=세로 정렬. "가운데 정렬"이 한 줄로 끝나요.</p>
+        <div class="demo-mount" data-demo="flex"></div>
+
+        <h3>Grid — 칸에 이름 붙여 뼈대 만들기</h3>
+        <p><code>grid-template-areas</code>로 칸에 이름을 적으면, 코드만 봐도 레이아웃이 그림처럼 보입니다.</p>
+        <div class="demo-mount" data-demo="grid"></div>
       </section>
 
       <!-- 09 -->
       <section id="sec09" class="lesson">
-        <div class="lesson-head"><span class="num">09</span><h2>애니메이션 &amp; 다단 레이아웃</h2></div>
-        <ul class="rich">
-          <li><b>transform</b>: <code>translate</code>(이동)·<code>rotate</code>(회전)·<code>scale</code>(크기). 최근엔 각각 독립 속성으로 분리.</li>
-          <li><b>transition</b>: <code>:hover</code> 시 부드러운 변화 — <code>transition: 속성 시간 타이밍함수(ease)</code>.</li>
-          <li><b>@keyframes</b>: 0%→100% 세밀한 시나리오, 무한 반복·복잡한 모션.</li>
-          <li><b>다단(Multi-column)</b>: <code>column-count</code>·<code>column-width</code>로 긴 글을 여러 단으로. 카드가 단 경계에서 잘리는 것은 자식에 <code>break-inside: avoid;</code>로 방지.</li>
-        </ul>
-        <div class="hover-demo">이 박스에 마우스를 올려보세요 (transition + transform)</div>
+        <div class="lesson-head"><span class="num">09</span><h2>애니메이션과 다단</h2></div>
+
+        <h3>transform + transition — 부드러운 움직임</h3>
+        <p><code>transform</code>은 이동(<code>translate</code>)·회전(<code>rotate</code>)·크기(<code>scale</code>)를 담당하고, <code>transition</code>이 그 변화를 "천천히" 만들어 부드럽게 합니다.</p>
+        <div class="demo-mount" data-demo="transition"></div>
+
+        <h3>@keyframes — 무한 반복 애니메이션</h3>
+        <p>0%→100% 단계별 변화를 정의하고 <code>infinite</code>로 무한 반복. 로딩 스피너가 대표 예시예요.</p>
+        <div class="demo-mount" data-demo="keyframes"></div>
+
+        <h3>다단(multi-column) — 신문처럼 여러 단</h3>
+        <p><code>column-count</code>로 단 수를 정하고, 카드가 단 경계에서 잘리지 않게 <code>break-inside: avoid</code>를 줍니다.</p>
+        <div class="demo-mount" data-demo="multicol"></div>
+      </section>
+
+      <!-- 코드 놀이터 -->
+      <section id="playground" class="playground">
+        <div class="lesson-head"><span class="num">🧪</span><h2>라이브 코드 놀이터</h2></div>
+        <p class="lead-easy">왼쪽 코드를 직접 고쳐보세요. 오른쪽 결과가 <b>실시간</b>으로 바뀝니다. 아래 버튼으로 예제를 불러와 변형해보면 가장 빨리 늡니다.</p>
+        <div class="preset-row">
+          <button type="button" class="chip" data-preset="button">🔘 버튼</button>
+          <button type="button" class="chip" data-preset="card">🪧 카드</button>
+          <button type="button" class="chip" data-preset="center">🎯 가운데 정렬</button>
+          <button type="button" class="chip" data-preset="gradient">🎨 그라데이션</button>
+        </div>
+        <div class="pg-grid">
+          <div class="pg-pane">
+            <div class="pg-label">✏️ 코드 (HTML + CSS)</div>
+            <textarea id="pgCode" spellcheck="false" aria-label="코드 입력"></textarea>
+          </div>
+          <div class="pg-pane">
+            <div class="pg-label">👀 결과 (바로 반영)</div>
+            <iframe id="pgView" title="실행 결과"></iframe>
+          </div>
+        </div>
       </section>
 
       <!-- 시험 정리 -->
       <section id="exam" class="exam">
         <div class="lesson-head"><span class="num">⭐</span><h2>시험에 나올만한 것 — 핵심 정리</h2></div>
-        <p class="exam-lead">출제 빈도가 높은 포인트를 "함정 위주"로 모았습니다. 시험 직전 이 표만 복습해도 됩니다.</p>
+        <p class="exam-lead">자주 나오고 자주 틀리는 것만 모았어요. 시험 직전 이 부분만 훑어도 됩니다.</p>
 
-        <h3>① 반드시 외울 규칙</h3>
+        <h3>① 무조건 외우는 규칙</h3>
         <table class="exam-table">
           <thead><tr><th scope="col">주제</th><th scope="col">정답 포인트</th></tr></thead>
           <tbody>
@@ -265,11 +275,11 @@ align-items: center;</code></pre>
             <tr><td>label 연결</td><td><code>for</code> ↔ <code>id</code> 일치</td></tr>
             <tr><td>line-height</td><td><b>단위 없는</b> 숫자(1.5)</td></tr>
             <tr><td>th 접근성</td><td><code>scope="col"/"row"</code></td></tr>
-            <tr><td>병합</td><td>가로 <code>colspan</code> / 세로 <code>rowspan</code></td></tr>
+            <tr><td>칸 합치기</td><td>가로 <code>colspan</code> / 세로 <code>rowspan</code></td></tr>
           </tbody>
         </table>
 
-        <h3>② 명시도 순서 (단골 출제)</h3>
+        <h3>② 명시도(우선순위) 순서 — 단골 출제</h3>
         <p class="formula"><code>!important</code> &gt; 인라인(1000) &gt; <code>#id</code>(100) &gt; <code>.class</code>·가상클래스(10) &gt; 태그(1) &gt; <code>*</code>(0)</p>
 
         <h3>③ 헷갈리는 짝 비교</h3>
@@ -278,16 +288,16 @@ align-items: center;</code></pre>
           <div class="cmp"><h4>em vs i</h4><p><code>em</code>=의미상 강조, <code>i</code>=단순 기울임</p></div>
           <div class="cmp"><h4>Flex vs Grid</h4><p>Flex=1차원(한 방향), Grid=2차원(행+열)</p></div>
           <div class="cmp"><h4>relative vs absolute</h4><p>relative=자리 유지·기준점, absolute=relative 부모 기준 띄움</p></div>
-          <div class="cmp"><h4>section vs article</h4><p>section=주제 구역, article=독립 배포 가능한 완결 글</p></div>
+          <div class="cmp"><h4>section vs article</h4><p>section=주제 구역, article=떼어내도 완결된 글</p></div>
           <div class="cmp"><h4>&gt; vs (공백)</h4><p><code>&gt;</code>=직계 자식만, 공백=모든 자손</p></div>
         </div>
 
         <h3>④ 자주 틀리는 함정</h3>
         <ul class="rich pitfall">
-          <li>헤딩을 <b>폰트 크기 용도</b>로 쓰기 → 금지(크기는 CSS)</li>
+          <li>헤딩을 <b>글자 크기 용도</b>로 쓰기 → 금지(크기는 CSS)</li>
           <li><code>&lt;br&gt;</code> 연타로 여백 만들기 → 금지(여백은 CSS)</li>
-          <li>테이블을 <b>레이아웃용</b>으로 사용 → 금지(데이터 전용)</li>
-          <li>말줄임표 3종 세트 누락 → <code>nowrap</code> + <code>overflow:hidden</code> + <code>text-overflow:ellipsis</code> 모두 필요</li>
+          <li>표를 <b>레이아웃용</b>으로 쓰기 → 금지(데이터 전용)</li>
+          <li>말줄임표 3종 세트 중 하나 누락 → 작동 안 함</li>
           <li><code>line-height: 24px</code>처럼 단위 붙이기 → 상속 꼬임</li>
           <li>다단에서 카드 잘림 → <code>break-inside: avoid;</code> 누락</li>
         </ul>
@@ -315,6 +325,7 @@ align-items: center;</code></pre>
   <a href="#top" class="to-top" id="toTop" aria-label="맨 위로">↑</a>
 
   <script src="quiz-data.js"></script>
+  <script src="demos.js"></script>
   <script src="script.js"></script>
 </body>
 </html>
