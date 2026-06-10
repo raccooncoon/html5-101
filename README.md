@@ -9,8 +9,8 @@
 | 과목 | 경로 | 구성 | 상태 |
 |---|---|---|---|
 | HTML5 & CSS | [/html-css/](https://raccooncoon.github.io/html5-101/html-css/) | 9강 · 라이브 데모 29 · 코드 놀이터 · 퀴즈 16문항 | ✅ |
-| 컴퓨터의 이해 | /computer/ | 15강 · 진법 변환기 · 논리 게이트 · 기출 변형 퀴즈 | 🚧 준비 중 |
-| 파이썬 프로그래밍 기초 | /python/ | 15강 · 브라우저 실행기(Pyodide) · 파이썬 놀이터 · 퀴즈 | 🚧 준비 중 |
+| 컴퓨터의 이해 | [/computer/](https://raccooncoon.github.io/html5-101/computer/) | 15강 · 진법 변환기·논리 게이트·2의 보수 · 기출 3개년 분석 · 변형 퀴즈 40문항 | ✅ |
+| 파이썬 프로그래밍 기초 | [/python/](https://raccooncoon.github.io/html5-101/python/) | 15강 · 브라우저 실행 예제 27(Pyodide) · 파이썬 놀이터 · 체크포인트 퀴즈 38문항 | ✅ |
 
 ## 특징
 

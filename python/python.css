@@ -1,0 +1,99 @@
+/* ============================================================
+   파이썬 프로그래밍 기초 — 과목 스타일 (base.css 다음에 로드)
+   액센트: 블루 + 실행기(runner) 전용 컴포넌트
+   ============================================================ */
+
+:root {
+  --accent: #60a5fa;
+  --accent-2: #fbbf24;
+}
+[data-theme="light"] {
+  --accent: #2563eb;
+  --accent-2: #b45309;
+}
+
+/* ===== 실행 가능 코드 블록 ===== */
+.py-run {
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  overflow: hidden;
+  margin: 16px 0;
+  box-shadow: var(--shadow);
+  background: var(--code-bg);
+}
+.py-head {
+  display: flex; align-items: center; justify-content: space-between; gap: 10px;
+  padding: 8px 14px;
+  background: color-mix(in srgb, var(--bg-card) 70%, var(--code-bg));
+  border-bottom: 1px solid var(--border);
+}
+.py-title { font-size: .82rem; font-weight: 700; color: var(--text-dim); }
+.py-actions { display: flex; gap: 8px; }
+.py-btn {
+  border: none; border-radius: 8px; padding: 6px 14px;
+  font-size: .85rem; font-weight: 700; cursor: pointer;
+  background: var(--accent); color: #fff;
+  transition: transform .15s, opacity .2s;
+}
+.py-btn:hover { transform: translateY(-1px); }
+.py-btn:disabled { opacity: .55; cursor: wait; transform: none; }
+.py-btn.secondary { background: var(--bg-soft); color: var(--text-dim); border: 1px solid var(--border); }
+
+.py-code {
+  width: 100%; border: 0; outline: none; resize: vertical; display: block;
+  background: var(--code-bg); color: var(--code-text);
+  font-family: "JetBrains Mono", monospace; font-size: .86rem; line-height: 1.6;
+  padding: 14px 16px; tab-size: 4; white-space: pre; overflow-x: auto;
+  min-height: 0;
+}
+
+.py-out {
+  border-top: 1px dashed var(--border);
+  padding: 10px 16px;
+  font-family: "JetBrains Mono", monospace; font-size: .84rem; line-height: 1.6;
+  white-space: pre-wrap; word-break: break-all;
+  color: #9ef7c3;
+  display: none;
+}
+.py-out.show { display: block; }
+.py-out .out-label { display: block; font-size: .72rem; color: var(--text-dim); letter-spacing: .05em; margin-bottom: 4px; font-family: "Noto Sans KR", sans-serif; }
+.py-out.error { color: #fda4a4; }
+
+/* 로딩 배너 */
+.py-loading {
+  position: fixed; bottom: 24px; left: 50%; transform: translateX(-50%);
+  background: var(--bg-card); border: 1px solid var(--accent);
+  border-radius: 999px; padding: 10px 22px; z-index: 90;
+  font-size: .9rem; font-weight: 600; box-shadow: var(--shadow);
+  display: none; align-items: center; gap: 10px;
+}
+.py-loading.show { display: flex; }
+.py-spinner {
+  width: 16px; height: 16px; border-radius: 50%;
+  border: 3px solid var(--border); border-top-color: var(--accent);
+  animation: pyspin .8s linear infinite;
+}
+@keyframes pyspin { to { transform: rotate(360deg); } }
+
+/* 놀이터 */
+.pg-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+.pg-pane { display: flex; flex-direction: column; border: 1px solid var(--border); border-radius: var(--radius); overflow: hidden; }
+.pg-label { padding: 8px 14px; background: var(--bg-soft); border-bottom: 1px solid var(--border); font-size: .82rem; font-weight: 700; color: var(--text-dim); }
+#pgCode {
+  flex: 1; min-height: 300px; resize: vertical; border: 0; outline: none;
+  background: var(--code-bg); color: var(--code-text);
+  font-family: "JetBrains Mono", monospace; font-size: .85rem; line-height: 1.6;
+  padding: 14px; tab-size: 4; white-space: pre;
+}
+#pgOut {
+  flex: 1; min-height: 300px; margin: 0; padding: 14px;
+  background: var(--code-bg); color: #9ef7c3;
+  font-family: "JetBrains Mono", monospace; font-size: .85rem; line-height: 1.6;
+  white-space: pre-wrap; overflow: auto;
+}
+.preset-row { display: flex; flex-wrap: wrap; gap: 8px; margin: 8px 0 16px; }
+
+@media (max-width: 860px) {
+  .pg-grid { grid-template-columns: 1fr; }
+  #pgCode, #pgOut { min-height: 220px; }
+}

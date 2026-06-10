@@ -1,0 +1,633 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="파이썬 프로그래밍 기초를 가장 쉽게 — 15강 핵심 정리, 브라우저에서 바로 실행하는 예제 27개, 파이썬 놀이터, 체크포인트 퀴즈.">
+  <title>파이썬 프로그래밍 기초 — 쉽게 배우는 학습 노트</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600&family=Noto+Sans+KR:wght@400;500;700;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../assets/base.css">
+  <link rel="stylesheet" href="python.css">
+</head>
+<body>
+  <div class="progress-bar" id="progressBar" aria-hidden="true"></div>
+
+  <header class="site-header">
+    <div class="header-inner">
+      <a href="../" class="brand">
+        <span class="brand-mark">🐍</span>
+        <span class="brand-text">파이썬 <strong>기초</strong></span>
+      </a>
+      <nav class="header-nav" aria-label="유틸리티">
+        <a class="ghost-btn" href="../">← 허브</a>
+        <button id="themeToggle" class="icon-btn" type="button" aria-label="다크/라이트 모드 전환">🌗</button>
+      </nav>
+    </div>
+  </header>
+
+  <div class="layout" id="top">
+    <aside class="sidebar" aria-label="목차">
+      <p class="side-title">목차</p>
+      <nav id="toc">
+        <a href="#intro" class="toc-link">시작하기</a>
+        <a href="#part1" class="toc-link">① 컴퓨터와 파이썬 (1~3강)</a>
+        <a href="#part2" class="toc-link">② 제어 구조 (4~6강)</a>
+        <a href="#part3" class="toc-link">③ 함수와 컬렉션 (7~9강)</a>
+        <a href="#part4" class="toc-link">④ 클래스·모듈·파일 (10~12강)</a>
+        <a href="#part5" class="toc-link">⑤ 프로젝트 (13~15강)</a>
+        <a href="#playground" class="toc-link toc-play">🐍 파이썬 놀이터</a>
+        <a href="#exam" class="toc-link toc-exam">⭐ 시험 정리</a>
+        <a href="#quiz" class="toc-link toc-quiz">📝 체크포인트 퀴즈</a>
+      </nav>
+    </aside>
+
+    <main class="content">
+      <!-- HERO -->
+      <section id="intro" class="hero">
+        <p class="eyebrow">프로그래밍 입문 · 15강 + 실행하며 배우기</p>
+        <h1 class="hero-title">파이썬,<br>실행하면서 배우면 쉽다</h1>
+        <p class="hero-lead">
+          이 페이지의 <b>모든 예제는 브라우저에서 바로 실행됩니다.</b>
+          <code>▶ 실행</code>을 누르고, 코드를 마음대로 고쳐 다시 눌러보세요 —
+          망가뜨려도 <code>↺ 처음 코드</code>로 돌아옵니다.
+          설치도 준비물도 없습니다.
+        </p>
+        <div class="hero-stats">
+          <div class="stat"><strong>15</strong><span>강의</span></div>
+          <div class="stat"><strong>27</strong><span>실행 예제</span></div>
+          <div class="stat"><strong>1</strong><span>놀이터</span></div>
+          <div class="stat"><strong>38</strong><span>퀴즈 문항</span></div>
+        </div>
+        <div class="hero-cta">
+          <a class="btn primary" href="#part1">학습 시작 →</a>
+          <a class="btn" href="#playground">🐍 놀이터</a>
+          <a class="btn" href="#exam">시험 정리</a>
+        </div>
+        <div class="callout tip" style="margin-top:24px"><b>첫 실행 안내</b> — 처음 ▶를 누르면 파이썬 엔진(Pyodide)을 내려받느라 몇 초 걸립니다. 한 번 받으면 그다음부터는 즉시 실행돼요.</div>
+      </section>
+
+      <!-- PART 1 -->
+      <section id="part1" class="lesson">
+        <div class="lesson-head"><span class="num">①</span><h2>컴퓨터와 파이썬 시작 (1~3강)</h2></div>
+
+        <h3>1강 · 컴퓨터의 이해 — 프로그래밍 전에 알아둘 것</h3>
+        <p class="lead-easy"><b>데이터</b>는 관찰·측정의 원재료(불꽃 색, 온도 3500도), <b>정보</b>는 그걸 정제·해석한 결과(파란 불꽃이 더 뜨겁다). 컴퓨터는 "데이터를 자동으로 처리해 정보를 만드는 기계"입니다.</p>
+        <ul class="rich">
+          <li><b>비트와 바이트</b> — 컴퓨터는 모든 것을 0/1(비트)로 저장. 8비트 = 1바이트.</li>
+          <li><b>폰 노이만 구조</b> — 입력장치 → (제어·연산: CPU) ↔ 기억장치 → 출력장치.</li>
+          <li><b>RAM vs HDD/SSD</b> — 주기억장치(RAM)는 빠르지만 휘발성, 보조기억장치는 느리지만 보존됨. 12강 '파일'이 중요한 이유!</li>
+        </ul>
+
+        <h3>2강 · 파이썬의 이해</h3>
+        <p class="lead-easy">파이썬은 <b>1991년 귀도 판 로섬(Guido van Rossum)</b>이 만든 언어로, 이름은 코미디 쇼 <i>'Monty Python's Flying Circus'</i>에서 따왔어요. 핵심 철학: <b>사람이 읽기 좋은 코드</b>.</p>
+        <div class="compare-grid">
+          <div class="cmp"><h4>특징 4가지</h4><p>인간친화적 · 개발 효율(짧은 코드) · 구조적 안정성 · 광범위한 활용(AI·데이터)</p></div>
+          <div class="cmp"><h4>버전 역사</h4><p>0.9.0(1991) → 2.0(2000, 모듈) → <b>3.0(2008)</b> → 2.x 지원 종료(2020)</p></div>
+          <div class="cmp"><h4>실행 방식</h4><p>파이썬은 <b>인터프리터</b> 언어 — 한 줄씩 해석·즉시 실행</p></div>
+        </div>
+
+        <h3>3강 · 데이터 타입, 변수, 연산자</h3>
+        <p class="lead-easy">변수는 <b>"값을 담는 이름표 붙은 상자"</b>입니다. <code>=</code>는 수학의 '같다'가 아니라 <b>"오른쪽 값을 왼쪽 상자에 저장하라(할당)"</b>는 뜻이에요.</p>
+        <p>가장 유명한 첫 프로그램부터 직접 실행해 보세요:</p>
+        <div class="py-run" data-title="예제 1 · 첫 프로그램">
+<pre>
+print("Hello World!")
+print("파이썬 시작!")
+</pre>
+        </div>
+        <ul class="rich">
+          <li><b>데이터 타입 3총사</b> — <code>int</code>(정수: 10), <code>float</code>(실수: 3.14), <code>str</code>(문자열: "hello"). <code>"123"</code>은 따옴표가 있으니 숫자가 아니라 <b>문자열</b>!</li>
+          <li><b>식별자 규칙</b> — 변수 이름엔 예약어(if, for, while…)를 쓸 수 없고, 숫자로 시작할 수 없습니다.</li>
+          <li><b>연산자 우선순위</b> — 괄호() → 거듭제곱** → 곱÷나눗셈(* / // %) → 덧뺄셈(+ -) → 비교(&lt; == !=) → not → and → or.</li>
+        </ul>
+        <div class="py-run" data-title="예제 2 · 변수에 담고 꺼내기">
+<pre>
+name = "Python"
+age = 34          # 1991년생
+print(name, "은(는)", age, "살")
+</pre>
+        </div>
+        <div class="py-run" data-title="예제 3 · 산술 연산과 문자열 연결">
+<pre>
+x = 2 * (7 + 15)
+y = 2 / 10 * 5
+z = "computer" + " " + "science"
+print(x)
+print(y)
+print(z)
+</pre>
+        </div>
+        <div class="py-run" data-title="예제 4 · 타입 변환 — 문자열을 숫자로">
+<pre>
+num_str = "123"          # 따옴표 → 문자열
+num_int = int(num_str)   # 정수로 변환
+num_float = float(num_str)
+print(num_int, num_float)
+print(type(num_str), type(num_int))
+</pre>
+        </div>
+        <div class="callout warn"><b>함정</b> — <code>input()</code>이 돌려주는 값은 <b>항상 문자열</b>입니다. 숫자로 계산하려면 <code>int()</code>나 <code>float()</code>로 꼭 변환하세요. 시험 단골!</div>
+      </section>
+
+      <!-- PART 2 -->
+      <section id="part2" class="lesson">
+        <div class="lesson-head"><span class="num">②</span><h2>제어 구조 — 순차·선택·반복 (4~6강)</h2></div>
+        <p class="lead-easy">구조적 프로그래밍의 3대 구조: <b>순차</b>(위에서 아래로) · <b>선택</b>(if로 갈림길) · <b>반복</b>(while/for로 되풀이). 모든 프로그램은 이 셋의 조합입니다.</p>
+
+        <h3>4강 · 순차 구조</h3>
+        <div class="py-run" data-title="예제 5 · 위에서 아래로 차례대로 (순차)">
+<pre>
+print("*")
+print("***")
+print("*****")
+print("*******")
+</pre>
+        </div>
+        <ul class="rich">
+          <li><b>프로그램 오류 3종</b> — <b>구문 오류</b>(문법 틀림, 실행 전 발견) / <b>런타임 오류</b>(실행 중 죽음, 0으로 나누기) / <b>의미 오류</b>(돌아가긴 하는데 결과가 틀림 — 가장 찾기 어려움).</li>
+        </ul>
+        <div class="py-run" data-title="예제 6 · 원뿔의 부피 (공식을 코드로)">
+<pre>
+import math
+
+r = 10   # 반지름
+h = 24   # 높이
+
+volume = (1/3) * math.pi * r * r * h
+print("원뿔의 부피:", volume)
+</pre>
+        </div>
+
+        <h3>5강 · 선택 구조와 논리 연산자</h3>
+        <p class="lead-easy"><code>if 조건:</code> 뒤에 오는 <b>들여쓰기된 블록</b>이 조건이 참일 때만 실행됩니다. 파이썬은 들여쓰기가 문법이에요(보통 스페이스 4칸).</p>
+        <div class="py-run" data-title="예제 7 · if-else — 합격 판정 (점수를 바꿔보세요)">
+<pre>
+score = 75
+
+if score >= 60:
+    print("합격입니다!")
+else:
+    print("불합격입니다.")
+</pre>
+        </div>
+        <div class="py-run" data-title="예제 8 · if-elif-else — 학점 매기기">
+<pre>
+score = 85
+
+if score >= 90:
+    print("A학점")
+elif score >= 80:
+    print("B학점")
+elif score >= 70:
+    print("C학점")
+else:
+    print("F학점")
+</pre>
+        </div>
+        <ul class="rich">
+          <li><b>비교 연산자 6가지</b> — <code>&lt; &lt;= &gt; &gt;= == !=</code>. "같다"는 <code>==</code>(두 개!), <code>=</code>는 할당.</li>
+          <li><b>논리 연산자</b> — <code>and</code>(둘 다 참) / <code>or</code>(하나라도 참) / <code>not</code>(뒤집기).</li>
+          <li><b>단락 평가</b> — <code>and</code>는 앞이 거짓이면 뒤를 보지도 않고, <code>or</code>는 앞이 참이면 뒤를 건너뜁니다(효율↑).</li>
+        </ul>
+        <div class="py-run" data-title="예제 9 · and / or / not 직접 확인">
+<pre>
+age = 25
+income = 3000
+
+print(age >= 20 and income >= 2000)   # 둘 다 참 → True
+print(age < 20 or income >= 2000)     # 하나 참 → True
+print(not (age >= 20))                # 참을 뒤집음 → False
+
+if age >= 20 and income >= 2000:
+    print("대출 가능합니다.")
+</pre>
+        </div>
+        <div class="py-run" data-title="예제 10 · 세 수 중 가장 큰 수 찾기">
+<pre>
+a, b, c = 17, 42, 29
+
+if a >= b and a >= c:
+    print("가장 큰 수:", a)
+elif b >= a and b >= c:
+    print("가장 큰 수:", b)
+else:
+    print("가장 큰 수:", c)
+</pre>
+        </div>
+
+        <h3>6강 · 반복 구조와 리스트</h3>
+        <p class="lead-easy">반복은 두 가지: <b>while</b>(조건이 참인 동안 — 횟수 모를 때), <b>for</b>(시퀀스를 하나씩 — 횟수·대상이 정해졌을 때).</p>
+        <div class="py-run" data-title="예제 11 · while — 1부터 n까지의 합">
+<pre>
+n = 10
+total = 0
+i = 1
+
+while i <= n:
+    total += i      # total = total + i 와 같음 (증감 할당)
+    i += 1
+
+print("1부터", n, "까지의 합:", total)
+</pre>
+        </div>
+        <div class="py-run" data-title="예제 12 · for — 리스트의 원소를 하나씩">
+<pre>
+hei_list = [1, 4, 14, 26, 31]
+
+for hei in hei_list:
+    print(hei)
+</pre>
+        </div>
+        <div class="py-run" data-title="예제 13 · 구구단 (dan을 바꿔보세요)">
+<pre>
+dan = 7
+
+for i in range(1, 10):
+    print(dan, "x", i, "=", dan * i)
+</pre>
+        </div>
+        <ul class="rich">
+          <li><b>리스트</b> — 여러 값을 순서대로 담는 상자: <code>[1, 4, 14]</code>. <b>인덱스는 0부터</b> 시작!</li>
+          <li><b>증감 할당 연산자</b> — <code>+=, -=, *=, /=, //=, %=, **=</code>. <code>count += 1</code>은 <code>count = count + 1</code>.</li>
+          <li><b>range(1, 10)</b> — 1부터 <b>9까지</b>(끝 숫자는 미포함). 함정 단골!</li>
+        </ul>
+      </section>
+
+      <!-- PART 3 -->
+      <section id="part3" class="lesson">
+        <div class="lesson-head"><span class="num">③</span><h2>함수와 컬렉션 (7~9강)</h2></div>
+
+        <h3>7강 · 함수</h3>
+        <p class="lead-easy">함수는 <b>"이름 붙인 작업 묶음"</b>입니다. 같은 코드를 복사·붙여넣기하는 대신 함수로 만들어 <b>재사용</b>해요. <code>def</code>로 정의하고, 이름+괄호로 호출합니다.</p>
+        <div class="py-run" data-title="예제 14 · 함수 정의와 호출">
+<pre>
+def greet():
+    print("안녕하세요!")
+    print("파이썬 함수입니다.")
+
+greet()   # 호출 — 이 줄이 없으면 아무 일도 안 일어나요
+greet()
+</pre>
+        </div>
+        <div class="py-run" data-title="예제 15 · 매개변수와 반환값 (return)">
+<pre>
+def cone_volume(r, h):           # r, h는 매개변수
+    vol = (1/3) * 3.14 * r ** 2 * h
+    return vol                   # 결과를 돌려준다
+
+v1 = cone_volume(10, 20)         # 10, 20은 인자
+v2 = cone_volume(5, 50)
+print("원뿔1:", v1)
+print("원뿔2:", v2)
+</pre>
+        </div>
+        <ul class="rich">
+          <li><b>내장함수 vs 사용자 정의 함수</b> — print·input·max·int는 파이썬이 미리 만든 것, <code>def</code>로 만드는 건 사용자 정의.</li>
+          <li><b>반환값 유무</b> — <code>print()</code>는 화면에 보여주기만(반환 없음), <code>input()·max()</code>는 값을 돌려줌(반환 있음).</li>
+          <li><b>format()</b> — <code>format(3.141592, "&gt;10.3f")</code> = 전체 10자리 오른쪽 정렬, 소수점 3자리 → <code>"     3.142"</code>.</li>
+        </ul>
+
+        <h3>8강 · 컬렉션 1 — 리스트 다루기</h3>
+        <p class="lead-easy">컬렉션은 데이터 묶음의 총칭: <b>시퀀스</b>(순서 O: 리스트·튜플) / <b>비시퀀스</b>(순서 X: 세트) / <b>매핑</b>(키-값: 딕셔너리). 리스트는 <b>뮤터블</b>(수정 가능)이라 추가·삭제·변경이 자유롭습니다.</p>
+        <div class="py-run" data-title="예제 16 · 리스트 인덱스와 append">
+<pre>
+body = [181, 78, "dark brown", "black"]
+
+print(body[0])      # 첫 원소 (인덱스 0!)
+print(body[2])
+
+body.append(2026)   # 끝에 추가
+print(body)
+print("원소 개수:", len(body))
+</pre>
+        </div>
+
+        <h3>9강 · 컬렉션 2 — 튜플·세트·딕셔너리</h3>
+        <div class="py-run" data-title="예제 17 · 튜플 — 수정 불가(immutable)">
+<pre>
+rad = (7, 22, 4, 22, 47)
+
+print(rad[0])
+# rad.append(30)  ← 튜플엔 append가 없어요! 주석을 풀어 실행해 보세요
+rad = rad + (30,)   # 대신 + 로 '새 튜플'을 만들 수는 있음
+print(rad)
+</pre>
+        </div>
+        <div class="py-run" data-title="예제 18 · 세트 — 중복 제거 + 컴프리헨션">
+<pre>
+rad_list = [7, 22, 4, 22, 47]
+
+unique = set(rad_list)                          # 중복 22가 하나로!
+print(unique)
+
+even = {x for x in rad_list if x % 2 == 0}      # 세트 컴프리헨션
+print("짝수만:", even)
+</pre>
+        </div>
+        <div class="py-run" data-title="예제 19 · 딕셔너리 — 키로 값 찾기">
+<pre>
+student = {"이름": "홍길동", "나이": 25, "전공": "컴퓨터과학"}
+
+print(student["이름"])     # 키로 접근
+student["학년"] = 3        # 새 키-값 추가
+print(student)
+</pre>
+        </div>
+        <table class="exam-table">
+          <thead><tr><th scope="col">컬렉션</th><th scope="col">기호</th><th scope="col">순서</th><th scope="col">수정</th><th scope="col">중복</th></tr></thead>
+          <tbody>
+            <tr><td><b>리스트</b></td><td>[ ]</td><td>O</td><td>O (뮤터블)</td><td>O</td></tr>
+            <tr><td><b>튜플</b></td><td>( )</td><td>O</td><td><b>X (이뮤터블)</b></td><td>O</td></tr>
+            <tr><td><b>세트</b></td><td>{ }</td><td>X</td><td>O</td><td><b>X (중복 제거)</b></td></tr>
+            <tr><td><b>딕셔너리</b></td><td>{키: 값}</td><td>키 기반</td><td>O</td><td>키는 유일</td></tr>
+          </tbody>
+        </table>
+      </section>
+
+      <!-- PART 4 -->
+      <section id="part4" class="lesson">
+        <div class="lesson-head"><span class="num">④</span><h2>클래스 · 모듈 · 파일 (10~12강)</h2></div>
+
+        <h3>10강 · 객체지향 — 클래스와 인스턴스</h3>
+        <p class="lead-easy"><b>클래스 = 설계도, 인스턴스 = 그 설계도로 찍어낸 실물.</b> 객체는 데이터(필드)와 동작(메소드)을 한 단위로 묶은 것(캡슐화)입니다. 붕어빵 틀(클래스)과 붕어빵(인스턴스)으로 기억하세요.</p>
+        <div class="py-run" data-title="예제 20 · Cone 클래스 — 설계도에서 객체 만들기">
+<pre>
+class Cone:
+    def __init__(self, radius=20, height=30):   # 생성자(초기자)
+        self.r = radius
+        self.h = height
+
+    def get_vol(self):                            # 메소드
+        return (1/3) * 3.14 * self.r ** 2 * self.h
+
+small = Cone(5, 10)      # 인스턴스 1
+big = Cone(20, 30)       # 인스턴스 2 — 같은 틀, 다른 값
+
+print("작은 원뿔:", small.get_vol())
+print("큰 원뿔:", big.get_vol())
+</pre>
+        </div>
+        <ul class="rich">
+          <li><b>__init__</b> — 인스턴스가 만들어질 때 자동 호출되는 <b>생성자</b>. <code>self</code>는 "자기 자신".</li>
+          <li><b>UML 다이어그램</b> — 클래스를 [이름 / 데이터 필드 / 생성자 / 메소드]로 표준화해 그린 설계도.</li>
+        </ul>
+
+        <h3>11강 · 모듈 — 남이 만든 코드 가져다 쓰기</h3>
+        <p class="lead-easy"><b>모듈</b>은 함수·클래스·상수를 모아 둔 .py 파일, <b>패키지</b>는 모듈을 모은 폴더, <b>라이브러리</b>는 그 전체 집합. <code>import</code>로 가져옵니다.</p>
+        <div class="py-run" data-title="예제 21 · math 모듈">
+<pre>
+import math
+
+print("원주율:", math.pi)
+print("최대공약수:", math.gcd(6, 8))
+print("제곱근:", math.sqrt(16))
+print("올림:", math.ceil(3.2), "/ 내림:", math.floor(3.8))
+</pre>
+        </div>
+        <div class="py-run" data-title="예제 22 · random — 가위바위보 (몇 번 실행해 보세요)">
+<pre>
+import random
+
+options = ["가위", "바위", "보"]
+user = "바위"                      # 내 선택 (바꿔보세요)
+com = random.choice(options)       # 컴퓨터는 랜덤
+
+print("나:", user, "/ 컴퓨터:", com)
+if user == com:
+    print("비겼습니다!")
+elif (user == "바위" and com == "가위") or \
+     (user == "가위" and com == "보") or \
+     (user == "보" and com == "바위"):
+    print("이겼습니다!")
+else:
+    print("졌습니다!")
+</pre>
+        </div>
+        <div class="py-run" data-title="예제 23 · time — 소수 찾기 속도 재기">
+<pre>
+import time
+
+start = time.time()
+
+primes = []
+for num in range(2, 2000):
+    is_prime = True
+    for i in range(2, int(num ** 0.5) + 1):
+        if num % i == 0:
+            is_prime = False
+            break
+    if is_prime:
+        primes.append(num)
+
+end = time.time()
+print("2~2000 사이 소수:", len(primes), "개")
+print("걸린 시간:", round(end - start, 4), "초")
+</pre>
+        </div>
+        <ul class="rich">
+          <li><b>import 3가지 방법</b> — ① <code>import math</code>(math.pi로 사용) ② <code>from math import pi</code>(pi로 바로) ③ <code>from math import *</code>(전부 — 이름 충돌 위험).</li>
+          <li><b>네임스페이스 탐색 순서</b> — <b>지역 → 전역 → 빌트인</b>. 함수 안에서 이름을 찾을 때 이 순서로 뒤집니다.</li>
+          <li><b>random 함수 구분</b> — <code>randint(a,b)</code> a~b 정수 / <code>choice(목록)</code> 하나 뽑기 / <code>sample(목록, n)</code> n개 뽑기 / <code>shuffle(목록)</code> 섞기.</li>
+        </ul>
+
+        <h3>12강 · 파일 처리</h3>
+        <p class="lead-easy">RAM은 전원이 꺼지면 다 사라지므로(휘발성), 데이터를 남기려면 <b>파일</b>로 저장해야 합니다(영속성). 파일 입출력은 무조건 3단계: <b>open → access(읽기/쓰기) → close</b>.</p>
+        <div class="py-run" data-title="예제 24 · 파일 쓰고 → 다시 읽기 (3단계)">
+<pre>
+# ① 쓰기 모드("w")로 열기
+fp = open("knou.txt", "w")
+fp.write("KNOU\n")
+fp.write("python programming\n")
+fp.close()                    # ③ 닫기 (무결성·자원 반환)
+
+# 추가 모드("a")로 덧붙이기
+fp = open("knou.txt", "a")
+fp.write("by CS\n")
+fp.close()
+
+# 읽기 모드("r")로 확인
+fp = open("knou.txt", "r")
+print(fp.read())
+fp.close()
+</pre>
+        </div>
+        <ul class="rich">
+          <li><b>모드 3가지</b> — <code>"r"</code> 읽기 / <code>"w"</code> 새로 쓰기(기존 내용 삭제!) / <code>"a"</code> 끝에 추가.</li>
+          <li><b>읽기 메소드</b> — <code>read()</code> 전체를 문자열로 / <code>readline()</code> 한 줄 / <code>readlines()</code> 전체를 줄 단위 <b>리스트</b>로.</li>
+          <li><b>경로</b> — 절대 경로(루트부터: /var/etc/a.py) vs 상대 경로(현재 기준: ../etc/a.py).</li>
+          <li><b>인코딩</b> — 한글은 <b>UTF-8</b>(국제 표준) 권장. EUC-KR(CP949)은 호환성 문제.</li>
+          <li><b>strip()</b> — 읽은 줄 끝의 개행(\n)·공백 제거. 비교 연산 오류의 주범 제거!</li>
+        </ul>
+      </section>
+
+      <!-- PART 5 -->
+      <section id="part5" class="lesson">
+        <div class="lesson-head"><span class="num">⑤</span><h2>프로젝트 — 데이터 분석과 게임 (13~15강)</h2></div>
+
+        <h3>13강 · 프로젝트 개요 — 데이터 분석 파이프라인</h3>
+        <p class="lead-easy">셜록 홈즈 전집(65만 단어!) 같은 텍스트에서 의미를 뽑는 과정은 4단계 파이프라인으로 정리됩니다.</p>
+        <div class="flow">
+          <span class="flow-step">① Collection 수집</span>
+          <span class="flow-step">② Preprocessing 전처리</span>
+          <span class="flow-step">③ Analysis 분석</span>
+          <span class="flow-step">④ Visualization 시각화</span>
+        </div>
+        <p class="mini"><b>전처리가 왜 중요할까?</b> — 원본(Raw Data)에는 형식 불일치·누락·중복이 섞여 있어요. 정제하지 않으면 분석 결과가 왜곡됩니다(쓰레기 입력 → 쓰레기 출력).</p>
+
+        <h3>14강 · 프로그램 개발 — SDLC와 게임 설계</h3>
+        <ul class="rich">
+          <li><b>SDLC 6단계</b> — <b>계획 → 분석 → 설계 → 구현 → 테스트 → 배포/유지보수</b>. 순서 문제로 출제!</li>
+          <li><b>이벤트 기반 프로그래밍</b> — 버튼 클릭·키 입력 같은 <b>이벤트</b>가 발생하면 <b>이벤트 핸들러</b>가 처리. 게임은 "이벤트 확인 → 로직 실행 → 화면 갱신"을 도는 <b>게임 루프</b>.</li>
+          <li><b>틱택토 설계 3분할</b> — ① 게임판 표현(3×3 리스트) ② 게임 진행(입력·AI·갱신) ③ 승리 판정(가로·세로·대각선).</li>
+        </ul>
+
+        <h3>15강 · 2차원 리스트 — 게임판 만들기</h3>
+        <p class="lead-easy">2차원 리스트는 <b>리스트 안의 리스트</b> — 표(행×열)를 표현합니다. 접근은 <code>board[행][열]</code> 순서!</p>
+        <div class="py-run" data-title="예제 25 · 2차원 리스트 만들고 접근하기">
+<pre>
+board = [[1, 2, 3],
+         [4, 5, 6],
+         [7, 8, 9]]
+
+print(board[0][1])   # 0행 1열 → 2
+print(board[2][0])   # 2행 0열 → 7
+
+for row in board:
+    print(row)
+</pre>
+        </div>
+        <div class="py-run" data-title="예제 26 · 동적 생성 + 중첩 반복문 순회">
+<pre>
+n = 4
+board = [[0] * n for _ in range(n)]   # n×n을 0으로 채워 생성
+
+board[1][2] = 9                       # 1행 2열만 바꾸기
+
+for i in range(n):           # i = 행
+    for j in range(n):       # j = 열
+        print(board[i][j], end=" ")
+    print()
+</pre>
+        </div>
+        <div class="py-run" data-title="예제 27 · 틱택토 게임판 (O의 위치를 바꿔보세요)">
+<pre>
+board = [[" " for _ in range(3)] for _ in range(3)]
+
+board[1][1] = "O"    # 가운데에 O
+board[0][2] = "X"    # 0행 2열에 X
+
+for row in board:
+    print(" | ".join(row))
+    print("---------")
+</pre>
+        </div>
+      </section>
+
+      <!-- 놀이터 -->
+      <section id="playground" class="playground">
+        <div class="lesson-head"><span class="num">🐍</span><h2>파이썬 놀이터</h2></div>
+        <p class="lead-easy">배운 것을 자유롭게 실험하는 공간입니다. 프리셋을 불러와 변형해 보세요. <code>input()</code>을 쓰면 입력창이 떠요.</p>
+        <div class="preset-row">
+          <button type="button" class="chip" data-preset="hello">👋 인사</button>
+          <button type="button" class="chip" data-preset="gugudan">✖️ 구구단</button>
+          <button type="button" class="chip" data-preset="grade">🎓 학점 변환</button>
+          <button type="button" class="chip" data-preset="lotto">🎰 로또 추첨</button>
+        </div>
+        <div class="pg-grid">
+          <div class="pg-pane">
+            <div class="pg-label">✏️ 코드</div>
+            <textarea id="pgCode" spellcheck="false" aria-label="파이썬 코드 입력"></textarea>
+          </div>
+          <div class="pg-pane">
+            <div class="pg-label">👀 출력</div>
+            <pre id="pgOut"></pre>
+          </div>
+        </div>
+        <div class="quiz-actions" style="margin-top:14px">
+          <button type="button" id="pgRun" class="btn primary">▶ 실행</button>
+        </div>
+      </section>
+
+      <!-- 시험 정리 -->
+      <section id="exam" class="exam">
+        <div class="lesson-head"><span class="num">⭐</span><h2>시험 정리 — 핵심만 모아서</h2></div>
+        <p class="exam-lead">강의 체크포인트와 각 강의 시험 포인트를 종합했습니다.</p>
+
+        <h3>① 무조건 외우는 것</h3>
+        <table class="exam-table">
+          <thead><tr><th scope="col">항목</th><th scope="col">정답 포인트</th></tr></thead>
+          <tbody>
+            <tr><td>파이썬 탄생</td><td><b>귀도 판 로섬, 1991년</b> · 이름은 코미디쇼 Monty Python에서</td></tr>
+            <tr><td>파이썬 3.0</td><td><b>2008년</b> (하위 비호환) · 2.x 지원 종료 2020</td></tr>
+            <tr><td>실행 방식</td><td>인터프리터(한 줄씩) — 컴파일러는 전체 번역</td></tr>
+            <tr><td>구조적 프로그래밍 3구조</td><td><b>순차 · 선택 · 반복</b></td></tr>
+            <tr><td>input() 반환</td><td><b>항상 문자열(str)</b> → 계산하려면 int()/float() 변환</td></tr>
+            <tr><td>인덱스 시작</td><td><b>0부터</b> · range(1,10)은 1~9 (끝 미포함)</td></tr>
+            <tr><td>연산자 우선순위</td><td>() → ** → * / // % → + - → 비교 → not → and → or</td></tr>
+            <tr><td>함수 정의</td><td><code>def 이름(매개변수):</code> + 들여쓰기 · 결과는 return</td></tr>
+            <tr><td>파일 3단계</td><td><b>open → access → close</b> · 모드 r/w/a</td></tr>
+            <tr><td>네임스페이스 탐색</td><td><b>지역 → 전역 → 빌트인</b></td></tr>
+            <tr><td>데이터 분석 파이프라인</td><td>수집 → <b>전처리</b> → 분석 → 시각화</td></tr>
+            <tr><td>SDLC 6단계</td><td>계획 → 분석 → 설계 → 구현 → 테스트 → 배포/유지보수</td></tr>
+            <tr><td>2차원 리스트 접근</td><td><code>board[행][열]</code> · 동적 생성 <code>[[0]*n for _ in range(m)]</code></td></tr>
+          </tbody>
+        </table>
+
+        <h3>② 헷갈리는 짝</h3>
+        <div class="compare-grid">
+          <div class="cmp"><h4>= vs ==</h4><p>= 할당(저장) / == 같은지 비교</p></div>
+          <div class="cmp"><h4>int vs float vs str</h4><p>10 / 3.14 / "123"(따옴표면 무조건 문자열)</p></div>
+          <div class="cmp"><h4>리스트 vs 튜플</h4><p>[ ] 수정 가능 / ( ) 수정 불가(append 없음)</p></div>
+          <div class="cmp"><h4>세트 vs 딕셔너리</h4><p>{값들} 중복 제거·순서 X / {키: 값} 키로 접근</p></div>
+          <div class="cmp"><h4>while vs for</h4><p>조건 반복(횟수 미정) / 시퀀스 순회(대상 정해짐)</p></div>
+          <div class="cmp"><h4>구문 vs 의미 오류</h4><p>문법 틀림(실행 불가) / 실행되지만 결과 틀림</p></div>
+          <div class="cmp"><h4>read vs readlines</h4><p>전체 문자열 하나 / 줄 단위 리스트</p></div>
+          <div class="cmp"><h4>"w" vs "a"</h4><p>새로 쓰기(기존 삭제!) / 끝에 추가</p></div>
+          <div class="cmp"><h4>choice vs sample</h4><p>1개 뽑기 / n개 뽑기 (random 모듈)</p></div>
+          <div class="cmp"><h4>클래스 vs 인스턴스</h4><p>설계도(붕어빵 틀) / 실물(붕어빵)</p></div>
+          <div class="cmp"><h4>매개변수 vs 인자</h4><p>def f(r, h)의 r·h / 호출 f(10, 20)의 10·20</p></div>
+          <div class="cmp"><h4>모듈 vs 패키지</h4><p>.py 파일 하나 / 모듈을 모은 폴더</p></div>
+        </div>
+
+        <h3>③ 자주 틀리는 함정</h3>
+        <ul class="rich pitfall">
+          <li><code>input()</code> 결과로 바로 산술 연산 → <b>TypeError</b>. int() 변환 필수.</li>
+          <li><code>range(1, 10)</code>에 10이 포함된다고 착각 → <b>9까지</b>만.</li>
+          <li>리스트 인덱스를 1부터 센다고 착각 → <b>0부터</b>.</li>
+          <li>튜플에 <code>append()</code> 호출 → <b>AttributeError</b>(불변이라 없음).</li>
+          <li>들여쓰기 안 맞음 → <b>IndentationError</b>. 파이썬은 들여쓰기가 문법!</li>
+          <li><code>"w"</code> 모드로 열면 기존 내용이 <b>삭제</b>됨 — 덧붙이려면 "a".</li>
+          <li>close() 생략 → 버퍼 데이터 유실·자원 누수 위험.</li>
+        </ul>
+      </section>
+
+      <!-- 퀴즈 -->
+      <section id="quiz" class="quiz">
+        <div class="lesson-head"><span class="num">📝</span><h2>체크포인트 퀴즈</h2></div>
+        <p class="exam-lead">강의 체크포인트 30문항을 재구성하고 개념·출력 예측형을 보강한 38문항입니다.</p>
+        <form id="quizForm"></form>
+        <div class="quiz-actions">
+          <button type="button" id="gradeBtn" class="btn primary">채점하기</button>
+          <button type="button" id="resetBtn" class="btn">다시 풀기</button>
+        </div>
+        <div id="quizResult" class="quiz-result" hidden></div>
+      </section>
+    </main>
+  </div>
+
+  <footer class="site-footer">
+    <p>파이썬 프로그래밍 기초 — 15강 학습 노트 · <a href="../">학습 노트 101</a></p>
+    <p class="muted"><a href="https://github.com/raccooncoon/html5-101" target="_blank" rel="noopener noreferrer">raccooncoon/html5-101</a> · GitHub Pages 배포</p>
+  </footer>
+
+  <a href="#top" class="to-top" id="toTop" aria-label="맨 위로">↑</a>
+  <div class="py-loading" id="pyLoading"><span class="py-spinner"></span>파이썬 엔진 다운로드 중… (최초 1회)</div>
+
+  <script src="../assets/common.js"></script>
+  <script src="../assets/quiz-engine.js"></script>
+  <script src="quiz-data.js"></script>
+  <script src="runner.js"></script>
+</body>
+</html>
