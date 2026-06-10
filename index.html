@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="학습 노트 101 — HTML5/CSS, 컴퓨터의이해, 파이썬프로그래밍기초를 쉽게 배우는 학습 허브. 라이브 예시·체험 도구·시험 정리·퀴즈.">
+  <title>학습 노트 101 — 쉽게 배우는 학습 허브</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600&family=Noto+Sans+KR:wght@400;500;700;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/base.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="header-inner">
+      <a href="./" class="brand">
+        <span class="brand-mark">101</span>
+        <span class="brand-text">학습 노트 <strong>101</strong></span>
+      </a>
+      <nav class="header-nav" aria-label="유틸리티">
+        <button id="themeToggle" class="icon-btn" type="button" aria-label="다크/라이트 모드 전환">🌗</button>
+        <a class="ghost-btn" href="https://github.com/raccooncoon/html5-101" target="_blank" rel="noopener noreferrer">GitHub ↗</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="hub-main">
+    <section class="hub-hero">
+      <p class="eyebrow">예시를 보면서, 직접 만져보면서</p>
+      <h1 class="hero-title">쉽게 배우는 학습 노트</h1>
+      <p class="hero-lead">
+        강의록을 쉬운 말로 풀어 쓰고, 개념마다 바로 확인할 수 있는 예시와 체험 도구를 붙였습니다.
+        과목을 골라 시작하세요 — 끝에는 시험 정리와 퀴즈가 기다립니다.
+      </p>
+    </section>
+
+    <section class="subject-grid" aria-label="과목 목록">
+      <a class="subject-card" href="html-css/" style="--subject:#ff7a59">
+        <span class="s-icon">🎨</span>
+        <h2>HTML5 &amp; CSS</h2>
+        <p class="s-desc">웹페이지의 뼈대와 디자인. 시멘틱 마크업부터 Flex·Grid, 애니메이션까지 — 모든 개념을 라이브 예시로.</p>
+        <div class="s-meta"><span>9개 강의</span><span>라이브 데모 29</span><span>코드 놀이터</span><span>퀴즈 16문항</span></div>
+        <span class="s-go">학습 시작 →</span>
+      </a>
+
+      <div class="subject-card soon" style="--subject:#2dd4bf" aria-disabled="true">
+        <span class="s-icon">💻</span>
+        <h2>컴퓨터의 이해</h2>
+        <p class="s-desc">정보사회·하드웨어·소프트웨어·네트워크·보안·멀티미디어까지 컴퓨터 과학의 큰 그림. 기출 3개년 분석 포함.</p>
+        <div class="s-meta"><span>15개 강의</span><span>진법 변환기</span><span>논리 게이트</span><span>기출 변형 퀴즈</span></div>
+        <span class="badge-soon">🚧 준비 중</span>
+      </div>
+
+      <div class="subject-card soon" style="--subject:#60a5fa" aria-disabled="true">
+        <span class="s-icon">🐍</span>
+        <h2>파이썬 프로그래밍 기초</h2>
+        <p class="s-desc">변수부터 제어구조, 함수, 컬렉션, 객체지향, 파일까지 — 모든 예제를 브라우저에서 바로 실행하며 배웁니다.</p>
+        <div class="s-meta"><span>15개 강의</span><span>브라우저 실행기</span><span>파이썬 놀이터</span><span>체크포인트 퀴즈</span></div>
+        <span class="badge-soon">🚧 준비 중</span>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <p>학습 노트 101 — 쉽게 배우는 학습 허브</p>
+    <p class="muted"><a href="https://github.com/raccooncoon/html5-101" target="_blank" rel="noopener noreferrer">raccooncoon/html5-101</a> · GitHub Pages 배포</p>
+  </footer>
+
+  <script src="assets/common.js"></script>
+  <script>initPage();</script>
+</body>
+</html>
