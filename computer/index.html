@@ -1,0 +1,487 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="컴퓨터의 이해를 가장 쉽게 — 15강 핵심 정리, 진법 변환기·논리 게이트 체험 도구, 기출 3개년 분석과 변형 퀴즈.">
+  <title>컴퓨터의 이해 — 쉽게 배우는 학습 노트</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600&family=Noto+Sans+KR:wght@400;500;700;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../assets/base.css">
+  <link rel="stylesheet" href="computer.css">
+</head>
+<body>
+  <div class="progress-bar" id="progressBar" aria-hidden="true"></div>
+
+  <header class="site-header">
+    <div class="header-inner">
+      <a href="../" class="brand">
+        <span class="brand-mark">💻</span>
+        <span class="brand-text">컴퓨터의 <strong>이해</strong></span>
+      </a>
+      <nav class="header-nav" aria-label="유틸리티">
+        <a class="ghost-btn" href="../">← 허브</a>
+        <button id="themeToggle" class="icon-btn" type="button" aria-label="다크/라이트 모드 전환">🌗</button>
+      </nav>
+    </div>
+  </header>
+
+  <div class="layout" id="top">
+    <aside class="sidebar" aria-label="목차">
+      <p class="side-title">목차</p>
+      <nav id="toc">
+        <a href="#intro" class="toc-link">시작하기</a>
+        <a href="#part1" class="toc-link">① 컴퓨터와 정보사회 (1~3강)</a>
+        <a href="#part2" class="toc-link">② 하드웨어 (4~5강)</a>
+        <a href="#part3" class="toc-link">③ 소프트웨어와 데이터 (6~7강)</a>
+        <a href="#part4" class="toc-link">④ 네트워크·인터넷·보안 (8~12강)</a>
+        <a href="#part5" class="toc-link">⑤ 멀티미디어와 미래 기술 (13~15강)</a>
+        <a href="#tools" class="toc-link toc-play">🧮 체험 도구</a>
+        <a href="#exam" class="toc-link toc-exam">⭐ 시험 정리 + 기출 분석</a>
+        <a href="#quiz" class="toc-link toc-quiz">📝 기출 변형 퀴즈</a>
+      </nav>
+    </aside>
+
+    <main class="content">
+      <!-- HERO -->
+      <section id="intro" class="hero">
+        <p class="eyebrow">컴퓨터과학 입문 · 15강 + 기출 3개년 분석</p>
+        <h1 class="hero-title">컴퓨터의 이해,<br>큰 그림부터 잡고 가기</h1>
+        <p class="hero-lead">
+          컴퓨터의 역사부터 하드웨어·소프트웨어·네트워크·보안·미래 기술까지.
+          외울 게 많아 보이지만 <b>흐름으로 이해하면 절반은 끝</b>입니다.
+          숫자가 헷갈리는 진법은 <a href="#tools">변환기로 직접 돌려보고</a>,
+          마무리는 <a href="#quiz">기출 변형 퀴즈</a>로 점검하세요.
+        </p>
+        <div class="hero-stats">
+          <div class="stat"><strong>15</strong><span>강의</span></div>
+          <div class="stat"><strong>3</strong><span>체험 도구</span></div>
+          <div class="stat"><strong>3개년</strong><span>기출 분석</span></div>
+          <div class="stat"><strong>30+</strong><span>퀴즈 문항</span></div>
+        </div>
+        <div class="hero-cta">
+          <a class="btn primary" href="#part1">학습 시작 →</a>
+          <a class="btn" href="#tools">🧮 체험 도구</a>
+          <a class="btn" href="#exam">시험 정리</a>
+        </div>
+      </section>
+
+      <!-- PART 1 -->
+      <section id="part1" class="lesson">
+        <div class="lesson-head"><span class="num">①</span><h2>컴퓨터와 정보사회 (1~3강)</h2></div>
+
+        <h3>1강 · 정보사회와 컴퓨터</h3>
+        <p class="lead-easy">19세기엔 <b>증기기관</b>이 세상을 바꿨고(산업혁명), 20세기엔 <b>컴퓨터·통신</b>이 세상을 바꿨습니다(정보혁명). 2016년 클라우스 슈밥이 말한 <b>4차 산업혁명</b>은 AI·IoT·빅데이터가 주인공이에요.</p>
+        <div class="flow">
+          <span class="flow-step">1차 증기기관</span>
+          <span class="flow-step">2차 전기</span>
+          <span class="flow-step">3차 컴퓨터</span>
+          <span class="flow-step">4차 AI·IoT·빅데이터</span>
+        </div>
+        <ul class="rich">
+          <li><b>데이터 vs 정보</b> — 데이터는 가공 전 원재료(성적 점수 입력), 정보는 의미 있게 가공된 결과(성적표). <i>"데이터 → 처리 → 정보"</i> 순서만 기억하세요.</li>
+          <li><b>컴퓨터시스템 구성</b> — 하드웨어 5요소: 입력장치·기억장치·연산장치(ALU)·제어장치·출력장치. 소프트웨어는 사람과 하드웨어 사이의 매개체.</li>
+          <li><b>이동통신 세대</b> — 1G 아날로그 음성 → 2G 음성+문자(CDMA) → 3G +영상·인터넷 → 4G LTE(100Mbps~1Gbps) → <b>5G 20Gbps</b>(4G의 20배, 초저지연·초연결).</li>
+          <li><b>유비쿼터스</b> — 라틴어 "도처에 존재한다". <b>1988년 마크 와이저(Mark Weiser)</b>가 제시. 3A(Anytime·Anywhere·Anydevice) + 5C(Computing·Communication·Connectivity·Contents·Calm).</li>
+        </ul>
+        <div class="callout tip"><b>컴퓨터 종류 크기순</b> — 개인용 PC(1974 MITS 키트가 최초) &lt; 서버 &lt; 메인프레임(1950년대, 대기업 중앙 컴퓨터) &lt; 슈퍼컴퓨터(우주·일기예보·국방). 특수 목적엔 전용컴퓨터(미사일 유도, 가전 내장).</div>
+
+        <h3>2강 · 컴퓨터와 통신산업의 발전</h3>
+        <p class="lead-easy">컴퓨터 역사는 <b>"무엇으로 회로를 만들었나"</b>로 세대를 나눕니다. 진공관 → 트랜지스터 → 집적회로(IC) → 고밀도 IC. 이 순서가 시험의 단골입니다.</p>
+        <table class="exam-table">
+          <thead><tr><th scope="col">세대</th><th scope="col">시기</th><th scope="col">핵심 소자</th><th scope="col">대표 컴퓨터·사건</th></tr></thead>
+          <tbody>
+            <tr><td><b>1세대</b></td><td>1946~1957</td><td>진공관</td><td>ENIAC(1946, 진공관 18,000개·30톤), EDVAC(폰 노이만 프로그램 내장), UNIVAC I(1951)</td></tr>
+            <tr><td><b>2세대</b></td><td>1958~1964</td><td>트랜지스터(1947 벨연구소)</td><td>TRADIC(1954), 고급언어 FORTRAN·COBOL 등장, 자기코어 메모리</td></tr>
+            <tr><td><b>3세대</b></td><td>1965~1971</td><td>집적회로(IC)</td><td>IBM 시스템/360(1964), 운영체제·다중프로그래밍, 미니컴퓨터(1965 DEC)</td></tr>
+            <tr><td><b>4세대</b></td><td>1972~현재</td><td>고밀도 IC(LSI→VLSI→ULSI)</td><td>마이크로프로세서(1971 Intel 4004), PC·서버·인터넷</td></tr>
+          </tbody>
+        </table>
+        <ul class="rich">
+          <li><b>컴퓨터 이전의 계산도구</b> — 파스칼 가산기(1642) → 라이프니츠 승제산기(1674) → <b>배비지 해석기계(1834)</b>: 입력·출력·기억·제어·계산, 현대 컴퓨터 5대 기능의 원형(당시 기술로 제작 불가).</li>
+          <li><b>최초 논쟁 정리</b> — 최초의 전자식 디지털 컴퓨터는 <b>ABC</b>(1937~42, 아타나소프·베리, 1973년 특허 인정). 최초의 "대형" 전자식은 ENIAC(1946).</li>
+          <li><b>마이크로프로세서</b> — 연산장치+제어장치를 칩 하나에 집적(1971 Intel 4004, 3×4mm인데 ENIAC의 10배 성능). 이게 PC 시대를 열었습니다(Apple 1977, IBM PC).</li>
+        </ul>
+
+        <h3>3강 · 처리장치와 데이터 처리</h3>
+        <p class="lead-easy">CPU는 컴퓨터의 두뇌. 그 안에 <b>계산 담당(ALU)</b>, <b>지휘 담당(제어장치)</b>, <b>메모지(레지스터)</b>가 들어 있습니다.</p>
+        <div class="compare-grid">
+          <div class="cmp"><h4>ALU</h4><p>산술(가감승제) + 논리(비교·Shift) 연산 수행</p></div>
+          <div class="cmp"><h4>제어장치</h4><p>시스템 전체 지시·감독·조정, 입출력 제어</p></div>
+          <div class="cmp"><h4>레지스터</h4><p>처리할 명령어·데이터를 잠시 보관하는 초고속 저장소</p></div>
+        </div>
+        <ul class="rich">
+          <li><b>비트와 바이트</b> — 비트(bit)는 0/1 한 자리(전류 ON/OFF), <b>8비트 = 1바이트 = 영문 1글자</b>.</li>
+          <li><b>용량 단위(2의 거듭제곱)</b> — KB(2¹⁰) → MB(2²⁰) → GB(2³⁰) → TB(2⁴⁰) → PB(2⁵⁰). 속도 단위는 ms(10⁻³) → µs(10⁻⁶) → ns(10⁻⁹) → ps(10⁻¹²).</li>
+          <li><b>진법</b> — 컴퓨터는 2진법으로 저장합니다. (1010)₂ = 8+2 = 10. 16진법은 10~15를 A~F로 표기. <a href="#tools">아래 변환기에서 직접 돌려보세요</a>.</li>
+          <li><b>문자 인코딩</b> — ASCII는 7비트(128문자, '0'=30 'A'=41 'Z'=5A in 16진), <b>유니코드는 16비트(1991년, 65,536문자)</b>로 한글·한자 등 전 세계 문자 표현.</li>
+          <li><b>데이터 계층</b> — 필드(최소 단위: 이름·주소) → 레코드(필드 모임: 한 사람 정보) → 파일(레코드 모임).</li>
+        </ul>
+        <div class="callout warn"><b>헷갈리면 시험에서 틀리는 메모리</b> — <code>SRAM</code>=캐시용(빠름, 리프레시 불필요) vs <code>DRAM</code>=주기억장치용(리프레싱 필요). <code>ROM</code>=읽기 전용(제작 시 기록) vs <code>RAM</code>=읽고 쓰기. 자기코어(1950s)는 비휘발성인데 느리고, 반도체는 빠른데 휘발성!</div>
+      </section>
+
+      <!-- PART 2 -->
+      <section id="part2" class="lesson">
+        <div class="lesson-head"><span class="num">②</span><h2>하드웨어 — 입출력과 저장장치 (4~5강)</h2></div>
+
+        <h3>4강 · 컴퓨터의 입출력</h3>
+        <p class="lead-easy">처리 방식엔 두 갈래가 있어요. <b>일괄처리</b>는 모아서 한 방에(OMR 채점, 효율 중시), <b>대화식 처리</b>는 입력 즉시 응답(웹 검색·뱅킹, 응답속도 중시).</p>
+        <ul class="rich">
+          <li><b>입력 3분류</b> — ① 단말기 입력(키보드·마우스·터치·음성) ② 원시 데이터 직접 입력(OMR·OCR·MICR·바코드) ③ 보조기억매체(디스크·USB).</li>
+          <li><b>원시문서 4형제</b> — <b>OMR</b> 마크 인식(시험 답안지) / <b>OCR</b> 글자 인식(인쇄·손글씨) / <b>MICR</b> 자기잉크 글자(은행 수표, E-13B 서체) / <b>바코드</b> 흑백 막대(상품). +2차원 <b>QR코드</b>(1994 덴소 웨이브, 최대 2,953바이트), <b>RFID</b>(IC칩+전자기장 무선 인식).</li>
+          <li><b>데이터 검증 5단계</b> — 문자종류 확인 → 타당성 → 범위 → 일관성 → <b>체크디지트</b>(오류 검출용 추가 숫자. 입력 후 재계산해 비교). "GIGO: 쓰레기를 넣으면 쓰레기가 나온다"가 검증의 이유.</li>
+          <li><b>해상도</b> — HD(1280×720) &lt; Full HD(1920×1080) &lt; QHD(2560×1440) &lt; 4K UHD(3840×2160) &lt; 8K(7680×4320).</li>
+          <li><b>프린터</b> — 충격식(도트 매트릭스·데이지 휠) vs 비충격식(레이저·잉크젯·감열). <b>3D 프린터</b>는 절삭형(깎기) vs 적층형(쌓기).</li>
+        </ul>
+
+        <h3>5강 · 보조기억장치와 데이터 저장</h3>
+        <p class="lead-easy">주기억장치(RAM)는 좁고 전원이 꺼지면 다 잊어버립니다. 그래서 <b>크고(대용량) 안 잊는(비휘발성)</b> 보조기억장치가 필요해요. 핵심 구분은 <b>순차접근 vs 직접접근</b>.</p>
+        <table class="exam-table">
+          <thead><tr><th scope="col">접근</th><th scope="col">매체</th><th scope="col">핵심 포인트</th></tr></thead>
+          <tbody>
+            <tr><td><b>순차</b></td><td>자기테이프(DAT·DLT·LTO)</td><td>처음부터 차례로 읽음 → 느림 → <b>백업 전용</b>. LTO-9는 18TB(압축 45TB)</td></tr>
+            <tr><td rowspan="3"><b>직접</b></td><td>하드디스크</td><td>트랙(원) → 섹터(조각) → 실린더(같은 반경 트랙 묶음). 성능 = 탐색시간+회전지연+전송시간</td></tr>
+            <tr><td>광디스크</td><td>CD(700MB) → DVD(4.7/8.5GB) → Blu-ray(25/50/128GB). 기록방식: ROM(읽기만)·WORM(1회 기록)·RW(약 1,000회)</td></tr>
+            <tr><td>SSD·플래시</td><td>무동작 부품 → 빠르고 튼튼·저전력. 단점: 쓰기 수명 한정, 고가</td></tr>
+          </tbody>
+        </table>
+        <div class="compare-grid">
+          <div class="cmp"><h4>CLV vs CAV</h4><p>CLV=일정한 <u>선</u>속도, 나선형 트랙(광디스크) / CAV=일정한 <u>각</u>속도, 동심원(자기디스크, 직접접근 빠름)</p></div>
+          <div class="cmp"><h4>SLC vs MLC</h4><p>SLC=셀당 1비트(안정·빠름·비쌈) / MLC·TLC·QLC=셀당 2~4비트(저렴하지만 느리고 수명↓)</p></div>
+          <div class="cmp"><h4>RAID</h4><p>여러 디스크에 분산 저장해 신뢰성·성능 향상(디스크 어레이)</p></div>
+          <div class="cmp"><h4>클라우드 저장</h4><p>인터넷 기반, 쓴 만큼 지불. Google Drive·OneDrive·DropBox·iCloud</p></div>
+        </div>
+        <div class="callout tip"><b>USB 속도</b> — USB 2.0은 최대 480Mbps, USB 3.2는 최대 20Gbps. 기억장치 계층은 "레지스터 → 캐시 → 주기억 → 보조기억"(위로 갈수록 빠르고 작음).</div>
+      </section>
+
+      <!-- PART 3 -->
+      <section id="part3" class="lesson">
+        <div class="lesson-head"><span class="num">③</span><h2>소프트웨어와 데이터 (6~7강)</h2></div>
+
+        <h3>6강 · 소프트웨어의 종류</h3>
+        <p class="lead-easy">소프트웨어는 딱 두 부류입니다. 컴퓨터 자체를 돌리는 <b>시스템 소프트웨어</b>(OS·컴파일러·유틸리티)와, 특정 일을 하는 <b>응용 소프트웨어</b>(워드·엑셀·포토샵).</p>
+        <ul class="rich">
+          <li><b>운영체제의 4가지 역할</b> — ① 사용자 인터페이스 제공(CLI/GUI) ② 하드웨어 장치 관리 ③ 파일시스템 관리 ④ 프로그램 실행 관리.</li>
+          <li><b>부팅 순서</b> — ROM의 <b>BIOS</b> 실행 → <b>POST</b>(자가진단) → <b>Booting</b>(OS를 RAM에 적재). 시험에 순서로 나옵니다.</li>
+          <li><b>OS 연표</b> — UNIX(1970년대 벨연구소, 멀티유저) / <b>Linux(1991 리누스 토발즈, 오픈소스)</b> / Windows 10(2015)·11(2021) / Mac OS X(2001).</li>
+          <li><b>컴파일러 vs 인터프리터</b> — 컴파일러는 전체를 한 번에 번역(실행 빠름), 인터프리터는 한 줄씩 해석·즉시 실행(결과 확인 빠름).</li>
+          <li><b>프로그래밍 언어 세대</b> — 1GL 기계어 → 2GL 어셈블리 → 3GL 고급언어(C·Java) → 4GL 특정응용(DB질의) → 5GL 인공지능(LISP·Prolog).</li>
+        </ul>
+        <table class="exam-table">
+          <thead><tr><th scope="col">사용권</th><th scope="col">비용</th><th scope="col">특징</th></tr></thead>
+          <tbody>
+            <tr><td>정품 소프트웨어</td><td>유료</td><td>허가 범위 내 사용, 수정·공유 제한</td></tr>
+            <tr><td>셰어웨어</td><td>체험 무료</td><td>판매 목적이지만 기간·기능 제한판 무료 제공</td></tr>
+            <tr><td>프리웨어</td><td>무료</td><td><b>개인 사용만</b> 무료 — 직장 사용은 저작권 침해 소지</td></tr>
+            <tr><td>자유 소프트웨어</td><td>무료</td><td>사용·분석/수정·재배포·수정본 배포의 <b>4가지 자유</b>(GPL). 1983 스톨먼 GNU</td></tr>
+          </tbody>
+        </table>
+        <p class="mini"><b>기업 정보시스템 약어</b> — TPS(거래처리) · DSS(의사결정지원) · <b>ERP(전사적 자원관리: 생산~회계 통합)</b> · CRM(고객관계) · SCM(공급망).</p>
+
+        <h3>7강 · 데이터베이스</h3>
+        <p class="lead-easy">파일로 따로따로 관리하면 같은 데이터가 여기저기 중복되고 서로 어긋납니다. 그래서 데이터를 한 곳에 모으고 <b>DBMS라는 관리인</b>을 통해서만 접근하게 만든 것이 데이터베이스입니다.</p>
+        <ul class="rich">
+          <li><b>DBMS의 3대 기능</b> — ① 구조 <b>정의</b>(논리적·물리적 구조) ② 데이터 <b>조작</b>(검색·삽입·수정·삭제) ③ 데이터 <b>제어</b>(무결성·권한·병행제어).</li>
+          <li><b>데이터베이스 언어</b> — <b>DDL</b>(정의: 스키마 생성·변경·삭제) / <b>DML</b>(조작: 삽입·검색·수정·삭제). 표준 언어는 <b>SQL</b>.</li>
+          <li><b>데이터 접근 3구조</b> — 순차적(처음부터 훑기) / 상대적·직접적(Key→주소 변환) / <b>인덱스</b>(색인으로 위치 찾기, 검색 최速).</li>
+        </ul>
+        <div class="compare-grid">
+          <div class="cmp"><h4>외부 스키마</h4><p><b>사용자</b> 관점 — 여러 개 존재 가능</p></div>
+          <div class="cmp"><h4>개념 스키마</h4><p><b>조직 전체</b> 관점 — 단 1개</p></div>
+          <div class="cmp"><h4>내부 스키마</h4><p><b>물리적 저장</b> 관점 — 디스크에 어떻게 저장되나</p></div>
+        </div>
+        <div class="callout tip"><b>장점 5 / 단점 4</b> — 장점: 중복 최소화·독립성·일관성(무결성)·공유·표준화(SQL). 단점: 운영비↑·설계 복잡·백업/회복 복잡·시스템 취약성. <b>데이터 웨어하우스</b>는 의사결정 분석용 <u>읽기 전용</u> DB(시점별 저장, 갱신 없음).</div>
+      </section>
+
+      <!-- PART 4 -->
+      <section id="part4" class="lesson">
+        <div class="lesson-head"><span class="num">④</span><h2>네트워크 · 인터넷 · 보안 (8~12강)</h2></div>
+
+        <h3>8강 · 정보통신기술과 우리 사회</h3>
+        <p class="lead-easy">ICT는 정보를 주고받는 기술(IT의 확장). 특징은 <b>시공간 극복 + 다양한 형태 전달 + 타 기술과 융합</b>. 분야별 사례 한 개씩만 연결해두면 됩니다.</p>
+        <div class="compare-grid">
+          <div class="cmp"><h4>경제</h4><p><b>핀테크</b>(금융+IT), 물류 드론</p></div>
+          <div class="cmp"><h4>교육</h4><p>e-Learning(언제 어디서나 맞춤형), OLPC 100달러 노트북</p></div>
+          <div class="cmp"><h4>의료</h4><p>e-Health/u-Health 원격 의료, 웨어러블</p></div>
+          <div class="cmp"><h4>스포츠</h4><p>2014 독일 빅데이터 우승, 2018 골라인 판독(IoT)</p></div>
+          <div class="cmp"><h4>정치</h4><p>2012 오바마 캠프 빅데이터(AWS)</p></div>
+          <div class="cmp"><h4>과학</h4><p>우주 인터넷(DTN), 자율주행, 지능형 로봇</p></div>
+        </div>
+
+        <h3>9강 · 4차 산업혁명과 미래사회</h3>
+        <p class="lead-easy">4차 산업혁명(Industry 4.0, 2016 슈밥)의 특징 3가지: <b>속도(기하급수적)</b>·<b>범위(전 분야)</b>·<b>시스템 영향(물리·디지털·생물 융합)</b>. 핵심 기술 4가지가 한 세트로 움직입니다.</p>
+        <div class="flow">
+          <span class="flow-step">IoT가 수집</span>
+          <span class="flow-step">클라우드가 저장</span>
+          <span class="flow-step">빅데이터가 분석</span>
+          <span class="flow-step">AI가 판단</span>
+        </div>
+        <ul class="rich">
+          <li><b>빅데이터 5V</b> — Volume(규모)·Velocity(속도)·Variety(다양성)·Value(가치)·Veracity(신뢰성).</li>
+          <li><b>클라우드 서비스 3층</b> — <b>SaaS</b>(소프트웨어: Office 365) / <b>PaaS</b>(개발 플랫폼) / <b>IaaS</b>(서버·인프라). 장점: 초기비용↓·종량제·어느 기기서나·안전 보관. 단점: 유출 우려·통신환경 의존.</li>
+          <li><b>AI 기술 묶음</b> — 머신러닝(데이터로 학습) ⊃ 딥러닝(신경망 모방), 자연어 처리(NLP), 컴퓨터 비전.</li>
+        </ul>
+
+        <h3>10강 · 정보통신</h3>
+        <p class="lead-easy">통신의 역사는 연도 암기가 핵심: <b>1837 모스 전신 → 1876 벨 전화기 → 1958 SAGE(최초 컴퓨터통신) → 1964 SABRE(좌석예약) → 1969 ARPANET(인터넷 전신)</b>.</p>
+        <ul class="rich">
+          <li><b>통신망의 3가지 목적</b> — 자원 공유 · 신뢰도 향상(대체 경로) · 처리기능 분산.</li>
+          <li><b>연결장치 역할 구분</b> — Modem(디지털↔아날로그 변환) / Hub(다포트 중계) / Repeater(신호 증폭) / Bridge(같은 프로토콜 연결) / <b>Router(IP로 경로 결정)</b> / <b>Gateway(다른 프로토콜 변환)</b>.</li>
+          <li><b>전송 방향</b> — 단방향 Simplex(TV) / 반이중 Half-Duplex(무전기: 양방향이지만 동시에 X) / 전이중 Full-Duplex(전화: 동시 O).</li>
+          <li><b>네트워크 위상 5형</b> — 성형(중앙 집중, 중앙 고장 시 전체 마비) / 환형(원형) / 버스형(일직선) / 그물형(다중 경로, 신뢰도 최고·비용 최고) / 트리형(계층).</li>
+          <li><b>규모순</b> — PAN(개인, 블루투스) ⊂ LAN(건물) ⊂ CAN(캠퍼스) ⊂ MAN(도시) ⊂ WAN(광역·인터넷).</li>
+        </ul>
+        <table class="exam-table">
+          <thead><tr><th scope="col">교환방식</th><th scope="col">원리</th><th scope="col">특징</th></tr></thead>
+          <tbody>
+            <tr><td><b>회선교환</b></td><td>전용 회선을 먼저 연결</td><td>지연·대역폭 일정, 효율 낮음 — 전화</td></tr>
+            <tr><td><b>메시지교환</b></td><td>중간 노드에 통째로 저장 후 전달(축적교환)</td><td>지연 가변, 손실 가능 — 과거 기술</td></tr>
+            <tr><td><b>패킷교환</b></td><td>작은 패킷으로 쪼개 전송</td><td>효율 최고, 인터넷의 기반. TCP(연결형·순서 보장)/UDP(비연결형)</td></tr>
+          </tbody>
+        </table>
+
+        <h3>11강 · 인터넷</h3>
+        <p class="lead-easy">인터넷 = INTERconnected NETwork, "네트워크의 네트워크". 기반은 <b>TCP/IP</b>입니다. 1969년 ARPANET에서 출발해 1983년 군용(MILNET)과 민간용으로 분리됐어요.</p>
+        <ul class="rich">
+          <li><b>IP 주소</b> — IPv4는 <b>32비트</b>(약 43억 개, 부족!) → IPv6는 <b>128비트</b>(사실상 무한, 유비쿼터스 대비).</li>
+          <li><b>DNS</b> — 도메인 이름(www.knou.ac.kr)을 IP 주소(203.232.172.32)로 <b>변환</b>해 주는 시스템.</li>
+          <li><b>URL 구조</b> — <code>프로토콜://도메인/경로/파일명</code>.</li>
+          <li><b>서비스와 프로토콜 짝</b> — 웹=HTTP / 메일 발송=<b>SMTP</b>, 수신=<b>POP3·IMAP</b> / 파일 전송=FTP / 원격 접속=Telnet.</li>
+          <li><b>전자상거래</b> — B2B(기업↔기업) / B2C(기업↔소비자) / C2C(소비자↔소비자, 중고거래).</li>
+        </ul>
+
+        <h3>12강 · 정보보안 — 최다 빈출!</h3>
+        <p class="lead-easy">보안의 3대 목표는 <b>CIA</b>: <b>C</b>onfidentiality 기밀성(노출 방지) · <b>I</b>ntegrity 무결성(변조 방지) · <b>A</b>vailability 가용성(필요할 때 접근 가능). 모든 보안 문제는 이 셋 중 무엇이 깨졌는지로 분류됩니다.</p>
+        <div class="compare-grid">
+          <div class="cmp"><h4>스니핑 vs 스푸핑</h4><p>스니핑=도청(엿듣기, 암호화로 방어) / 스푸핑=위조(가짜 IP·사이트로 속이기)</p></div>
+          <div class="cmp"><h4>DoS vs DDoS</h4><p>DoS=서비스 거부 공격 / DDoS=여러 컴퓨터로 <b>분산</b> 공격</p></div>
+          <div class="cmp"><h4>피싱 vs 파밍</h4><p>피싱=가짜 사이트로 유인해 정보 입력 요구 / 파밍=진짜와 똑같은 가짜 사이트(더 위협적)</p></div>
+        </div>
+        <table class="exam-table">
+          <thead><tr><th scope="col">악성 프로그램</th><th scope="col">감염</th><th scope="col">자기복제</th><th scope="col">특징</th></tr></thead>
+          <tbody>
+            <tr><td><b>바이러스</b></td><td>O (정상 파일에 기생)</td><td>O</td><td>부팅 지연, 데이터 변조 — 백신으로 방어</td></tr>
+            <tr><td><b>웜</b></td><td>X</td><td>O (독립 복제)</td><td>이메일·메신저로 전파, DDoS에 동원</td></tr>
+            <tr><td><b>트로이목마</b></td><td>위장 (유틸리티인 척)</td><td><b>X</b></td><td>자기복제 능력 없음</td></tr>
+          </tbody>
+        </table>
+        <table class="exam-table">
+          <thead><tr><th scope="col">암호화</th><th scope="col">키</th><th scope="col">속도</th><th scope="col">키 분배</th><th scope="col">부인 방지</th><th scope="col">대표</th></tr></thead>
+          <tbody>
+            <tr><td><b>대칭키</b>(비밀키)</td><td>암호화 = 복호화</td><td>빠름</td><td>어려움</td><td>불가</td><td>DES, 3DES</td></tr>
+            <tr><td><b>비대칭키</b>(공개키)</td><td>공개키 ≠ 개인키</td><td>느림</td><td>해결</td><td><b>가능(전자서명)</b></td><td>RSA</td></tr>
+          </tbody>
+        </table>
+        <div class="callout tip"><b>전자서명</b> — 개인키로 서명 → 공개키로 검증. 위변조 방지·부인 방지·인증 보장. 기반 구조는 PKI. <b>방화벽</b>은 내부망과 외부망을 분리하는 차단벽.</div>
+      </section>
+
+      <!-- PART 5 -->
+      <section id="part5" class="lesson">
+        <div class="lesson-head"><span class="num">⑤</span><h2>멀티미디어와 미래 기술 (13~15강)</h2></div>
+
+        <h3>13강 · 멀티미디어</h3>
+        <p class="lead-easy">멀티미디어 = 텍스트·그림·소리·영상 중 <b>2가지 이상</b>이 통합된 것. 특징 4가지: <b>디지털성·무손실성(복제해도 품질 유지)·상호작용성·비선형성(아무 데나 점프 가능)</b>.</p>
+        <div class="compare-grid">
+          <div class="cmp"><h4>래스터 vs 벡터</h4><p>래스터=픽셀 점들(확대하면 깨짐, 사진) / 벡터=수학 도형(확대해도 매끈, 로고)</p></div>
+          <div class="cmp"><h4>하이퍼텍스트/미디어</h4><p>하이퍼텍스트=링크로 연결된 글 / 하이퍼미디어=+오디오·비디오까지</p></div>
+          <div class="cmp"><h4>코덱</h4><p>Coder+Decoder. 비디오는 손실압축: MPEG, H.264(AVC), H.265(HEVC)</p></div>
+        </div>
+        <table class="exam-table">
+          <thead><tr><th scope="col">이미지 형식</th><th scope="col">압축</th><th scope="col">특징·용도</th></tr></thead>
+          <tbody>
+            <tr><td><b>BMP</b></td><td>없음</td><td>파일 큼, Windows 기본</td></tr>
+            <tr><td><b>GIF</b></td><td>LZW(무손실)</td><td><b>최대 256색</b>, 애니메이션·투명색 지원</td></tr>
+            <tr><td><b>PNG</b></td><td>무손실</td><td>GIF 특허 문제 대안, 트루컬러</td></tr>
+            <tr><td><b>JPEG</b></td><td><b>손실</b></td><td>높은 압축률, 사진용</td></tr>
+          </tbody>
+        </table>
+        <p class="mini"><b>XR 연속체</b> — 실제 환경 ↔ <b>AR</b>(현실+디지털 정보) ↔ MR(가상·현실 상호작용) ↔ <b>VR</b>(완전 가상). 이 모두를 포괄하는 말이 XR(확장현실). 메타버스 = Meta(초월)+Universe.</p>
+
+        <h3>14강 · 유비쿼터스</h3>
+        <p class="lead-easy">컴퓨터와 사람의 관계로 4단계를 외우세요: 메인프레임(여럿이 1대) → PC(소수가 1대) → 인터넷(1인 1대) → <b>유비쿼터스(1인 多대, 컴퓨터가 보이지 않게 스며듦)</b>.</p>
+        <ul class="rich">
+          <li><b>마크 와이저의 4가지 기준</b> — ① 모든 장치 연결(Network) ② 인터페이스는 눈에 안 보이게(Invisible) ③ 어디서나 사용 ④ 생활에 통합.</li>
+          <li><b>관련 기술 한 줄씩</b> — MEMS(초소형 기계·전자 융합) / RFID(무선 인식: 이동 중·원거리 OK, 위조 불가) / USN(센서 네트워크) / 임베디드(기기 내장 컴퓨터: 밥솥·세탁기) / SoC(칩 하나에 시스템 전부).</li>
+          <li><b>블루투스 vs 지그비</b> — 블루투스: 10m 무선 연결. 지그비: 블루투스의 고가·고전력 단점을 보완한 <b>저전력·저비용</b> 근거리 통신.</li>
+          <li><b>IoT</b> — <b>1999년 MIT의 Kevin Ashton</b>이 제시. 사물끼리 사람 개입 없이 정보 교환. 응용: 스마트팜·자율주행·헬스케어·스마트홈·스마트시티(국내 시범: 세종·부산).</li>
+        </ul>
+        <div class="callout warn"><b>인물-연도 짝 절대 헷갈리지 말 것</b> — 유비쿼터스 = <b>Mark Weiser, 1988</b>(제록스 PARC) / IoT = <b>Kevin Ashton, 1999</b>(MIT). 시험에 서로 바꿔서 나옵니다.</div>
+
+        <h3>15강 · 모바일서비스</h3>
+        <p class="lead-easy">모바일 시장의 패러다임: <b>음성 통화 중심 → OS+앱 중심</b>. 하드웨어 스펙 경쟁에서 소프트웨어 생태계 경쟁으로 넘어왔습니다.</p>
+        <table class="exam-table">
+          <thead><tr><th scope="col">모바일 OS</th><th scope="col">개발</th><th scope="col">특징</th><th scope="col">점유율(2022)</th></tr></thead>
+          <tbody>
+            <tr><td><b>Android</b></td><td>구글, 2007 OHA 결성</td><td><b>Linux 커널·오픈소스</b>, 자바 개발, Play Store</td><td>약 <b>71%</b></td></tr>
+            <tr><td><b>iOS</b></td><td>애플</td><td>직관적 UI, HW·SW 통합 관리로 <b>보안 우수</b>, 앱스토어</td><td>약 <b>28%</b></td></tr>
+            <tr><td><b>KaiOS</b></td><td>2017, Firefox OS 기반</td><td>저사양·경량(200MB), 개도국 피처폰</td><td>소수</td></tr>
+          </tbody>
+        </table>
+        <ul class="rich">
+          <li><b>플랫폼 분류</b> — 공개형(API 제공: iOS·Symbian) vs 공개소스형(소스 공개: <b>Android</b>).</li>
+          <li><b>WIPI</b> — 한국형 무선인터넷 플랫폼. <b>2005~2009년 국내 휴대폰 의무 탑재</b>.</li>
+          <li><b>웨어러블</b> — 안경·시계·의복형 컴퓨터. 신체에 가장 가깝고 스마트폰과 무선 연동(갤럭시 워치).</li>
+        </ul>
+      </section>
+
+      <!-- 체험 도구 -->
+      <section id="tools" class="playground">
+        <div class="lesson-head"><span class="num">🧮</span><h2>체험 도구 — 직접 만져보면 안 잊어요</h2></div>
+
+        <div class="tool-card">
+          <h3>① 진법 변환기</h3>
+          <p class="tool-desc">3강 단골 주제. 숫자를 넣으면 2·8·10·16진수로 동시에 변환하고, 시험에 나오는 <b>나눗셈 과정</b>까지 보여줍니다.</p>
+          <div class="tool-row">
+            <label for="baseSelect">입력 진법</label>
+            <select id="baseSelect" class="tool-select">
+              <option value="10" selected>10진수</option>
+              <option value="2">2진수</option>
+              <option value="8">8진수</option>
+              <option value="16">16진수</option>
+            </select>
+            <input id="baseInput" class="tool-input" type="text" inputmode="numeric" placeholder="예: 13" aria-label="변환할 숫자">
+            <span id="baseError" class="tool-error" role="alert"></span>
+          </div>
+          <div class="base-results">
+            <div class="base-box"><span class="b-label">2진수</span><span class="b-value" id="out2">—</span></div>
+            <div class="base-box"><span class="b-label">8진수</span><span class="b-value" id="out8">—</span></div>
+            <div class="base-box"><span class="b-label">10진수</span><span class="b-value" id="out10">—</span></div>
+            <div class="base-box"><span class="b-label">16진수</span><span class="b-value" id="out16">—</span></div>
+          </div>
+          <div class="base-steps" id="baseSteps"></div>
+        </div>
+
+        <div class="tool-card">
+          <h3>② 논리 게이트 시뮬레이터</h3>
+          <p class="tool-desc">스위치를 켜고 끄면서 AND·OR·XOR·NAND·NOR·NOT의 출력을 확인하세요. 진리표에서 현재 상태가 강조됩니다.</p>
+          <div class="tool-row">
+            <label for="gateSelect">게이트</label>
+            <select id="gateSelect" class="tool-select">
+              <option value="AND" selected>AND — 둘 다 1일 때만 1</option>
+              <option value="OR">OR — 하나라도 1이면 1</option>
+              <option value="XOR">XOR — 서로 다를 때만 1</option>
+              <option value="NAND">NAND — AND의 반대</option>
+              <option value="NOR">NOR — OR의 반대</option>
+              <option value="NOT">NOT — 뒤집기 (입력 1개)</option>
+            </select>
+          </div>
+          <div class="gate-grid">
+            <div class="gate-inputs">
+              <div class="switch-row"><span class="sw-name">A</span><button type="button" id="swA" class="toggle" aria-label="입력 A 토글"></button><span class="toggle-state" id="stA">0</span></div>
+              <div class="switch-row" id="swRowB"><span class="sw-name">B</span><button type="button" id="swB" class="toggle" aria-label="입력 B 토글"></button><span class="toggle-state" id="stB">0</span></div>
+            </div>
+            <div class="gate-mid"><span class="gate-arrow">→</span></div>
+            <div class="lamp" id="gateLamp" aria-live="polite">0</div>
+            <table class="truth-table" id="truthTable" aria-label="진리표"></table>
+          </div>
+        </div>
+
+        <div class="tool-card">
+          <h3>③ 2의 보수 계산기 (8비트)</h3>
+          <p class="tool-desc">컴퓨터가 음수를 저장하는 방법. <b>① 절댓값을 2진수로 → ② 0↔1 뒤집기(1의 보수) → ③ +1(2의 보수)</b> 세 단계가 그대로 보입니다.</p>
+          <div class="tool-row">
+            <label for="compInput">정수 입력 (-128 ~ 127)</label>
+            <input id="compInput" class="tool-input" type="number" min="-128" max="127" value="-5">
+          </div>
+          <div class="comp-steps">
+            <div class="comp-step"><span class="cs-label">① 절댓값의 2진수</span><span class="bits" id="compOrig"></span></div>
+            <div class="comp-step"><span class="cs-label">② 1의 보수 (0↔1 반전)</span><span class="bits" id="compOnes"></span></div>
+            <div class="comp-step"><span class="cs-label">③ 2의 보수 (+1)</span><span class="bits" id="compTwos"></span></div>
+          </div>
+          <p class="mini" id="compNote" style="margin-top:12px"></p>
+        </div>
+      </section>
+
+      <!-- 시험 정리 -->
+      <section id="exam" class="exam">
+        <div class="lesson-head"><span class="num">⭐</span><h2>시험 정리 + 기출 3개년 분석</h2></div>
+        <p class="exam-lead">17·18·19학년도 1학기 기말 기출 <b>105문항(중복 제외 99문항 판독)</b>을 분석했습니다. 어디서 많이 나오는지부터 보고, 그 부분을 집중 공략하세요.</p>
+
+        <h3>① 기출 빈출 주제 TOP (3개년 합산)</h3>
+        <div class="freq-list">
+          <div class="freq-item"><span class="f-name">네트워크 기초 (장비·토폴로지·교환방식)</span><div class="f-bar-track"><div class="f-bar" style="width:100%"></div></div><span class="f-count">12문항</span></div>
+          <div class="freq-item"><span class="f-name">정보보안 (CIA·암호화·악성코드)</span><div class="f-bar-track"><div class="f-bar" style="width:83%"></div></div><span class="f-count">10문항</span></div>
+          <div class="freq-item"><span class="f-name">웹 기술 (HTTP·HTML·DNS)</span><div class="f-bar-track"><div class="f-bar" style="width:83%"></div></div><span class="f-count">10문항</span></div>
+          <div class="freq-item"><span class="f-name">정보사회·신기술 (4차 산업·빅데이터·XR)</span><div class="f-bar-track"><div class="f-bar" style="width:67%"></div></div><span class="f-count">8문항</span></div>
+          <div class="freq-item"><span class="f-name">데이터베이스 (DBMS·SQL·스키마)</span><div class="f-bar-track"><div class="f-bar" style="width:50%"></div></div><span class="f-count">6문항</span></div>
+          <div class="freq-item"><span class="f-name">메모리·저장장치 (RAM/ROM·디스크)</span><div class="f-bar-track"><div class="f-bar" style="width:50%"></div></div><span class="f-count">6문항</span></div>
+          <div class="freq-item"><span class="f-name">CPU·운영체제</span><div class="f-bar-track"><div class="f-bar" style="width:42%"></div></div><span class="f-count">5문항</span></div>
+          <div class="freq-item"><span class="f-name">프로그래밍 언어 (세대·번역기)</span><div class="f-bar-track"><div class="f-bar" style="width:42%"></div></div><span class="f-count">5문항</span></div>
+        </div>
+        <div class="callout tip"><b>전략</b> — 네트워크+보안+웹만 합쳐도 전체의 약 1/3입니다. 8~12강(파트 ④)을 가장 공들여 복습하세요.</div>
+
+        <h3>② 무조건 외우는 연도·인물·숫자</h3>
+        <table class="exam-table">
+          <thead><tr><th scope="col">항목</th><th scope="col">정답 포인트</th></tr></thead>
+          <tbody>
+            <tr><td>ENIAC</td><td><b>1946</b>년, 진공관 18,000개, 최초의 '대형' 전자식</td></tr>
+            <tr><td>트랜지스터</td><td><b>1947</b>년 벨연구소 → 2세대(1958~64)</td></tr>
+            <tr><td>모스 전신 / 벨 전화</td><td><b>1837</b> / <b>1876</b></td></tr>
+            <tr><td>ARPANET</td><td><b>1969</b> 구축 — 인터넷의 전신 (패킷 교환)</td></tr>
+            <tr><td>유비쿼터스</td><td><b>마크 와이저, 1988</b> (제록스 PARC)</td></tr>
+            <tr><td>IoT</td><td><b>케빈 애슈턴, 1999</b> (MIT)</td></tr>
+            <tr><td>4차 산업혁명</td><td><b>클라우스 슈밥, 2016</b> (세계경제포럼)</td></tr>
+            <tr><td>IP 주소</td><td>IPv4 = <b>32비트</b> / IPv6 = <b>128비트</b></td></tr>
+            <tr><td>유니코드</td><td>1991년, <b>16비트</b> = 65,536문자</td></tr>
+            <tr><td>용량 단위</td><td>KB(2¹⁰) → MB(2²⁰) → GB(2³⁰) → TB(2⁴⁰) → PB(2⁵⁰)</td></tr>
+            <tr><td>이동통신</td><td>5G = <b>20Gbps</b> (4G의 20배)</td></tr>
+            <tr><td>모바일 OS 점유율</td><td>Android 71% / iOS 28% (2022)</td></tr>
+          </tbody>
+        </table>
+
+        <h3>③ 헷갈리는 짝 — 기출 최다 함정</h3>
+        <div class="compare-grid">
+          <div class="cmp"><h4>RAM vs ROM</h4><p>RAM=읽기/쓰기·휘발성(주기억) / ROM=읽기 전용·비휘발성</p></div>
+          <div class="cmp"><h4>SRAM vs DRAM</h4><p>SRAM=캐시·빠름 / DRAM=주기억·리프레싱 필요</p></div>
+          <div class="cmp"><h4>컴파일러 vs 인터프리터</h4><p>전체 번역(실행 빠름) vs 한 줄씩(확인 빠름)</p></div>
+          <div class="cmp"><h4>스니핑 vs 스푸핑</h4><p>도청(엿듣기) vs 위조(속이기)</p></div>
+          <div class="cmp"><h4>피싱 vs 파밍</h4><p>미끼로 유인 vs 진짜 같은 가짜 사이트</p></div>
+          <div class="cmp"><h4>바이러스 vs 웜 vs 트로이</h4><p>기생+복제 / 독립 복제 / 위장(복제 X)</p></div>
+          <div class="cmp"><h4>대칭키 vs 비대칭키</h4><p>같은 키·빠름·분배 문제 / 다른 키·느림·전자서명 O</p></div>
+          <div class="cmp"><h4>회선 vs 패킷 교환</h4><p>전용 회선(전화) vs 쪼개서 전송(인터넷)</p></div>
+          <div class="cmp"><h4>라우터 vs 게이트웨이</h4><p>IP 경로 결정 vs 다른 프로토콜 변환</p></div>
+          <div class="cmp"><h4>SMTP vs POP3</h4><p>메일 발송(Send) vs 메일 수신</p></div>
+          <div class="cmp"><h4>VR vs AR vs MR</h4><p>완전 가상 / 현실+정보 겹침 / 가상·현실 상호작용</p></div>
+          <div class="cmp"><h4>와이저 vs 애슈턴</h4><p>유비쿼터스 1988 vs IoT 1999 — 바꿔치기 단골!</p></div>
+        </div>
+
+        <h3>④ 자주 틀리는 함정 포인트</h3>
+        <ul class="rich pitfall">
+          <li>정보보안 3요소에 <b>"접근성"은 없다</b> — 기밀성·무결성·가용성(CIA). '접근성'이 보기에 나오면 함정.</li>
+          <li>CPU는 <b>저장하지 않는다</b> — '프로그램 영구 저장'이 CPU 기능으로 나오면 오답.</li>
+          <li>통신망 목적에 <b>'중앙집중형 처리'는 반대말</b> — 목적은 분산.</li>
+          <li>백신은 해킹 '방법'이 아니라 <b>방어 수단</b>.</li>
+          <li>BMP가 압축률 높다? — <b>반대</b>. BMP는 무압축이라 가장 크다.</li>
+          <li>HDMI는 인터넷 프로토콜이 <b>아니다</b>(영상 인터페이스).</li>
+          <li>트로이목마는 <b>자기복제를 못 한다</b> — 복제하는 건 바이러스·웜.</li>
+        </ul>
+      </section>
+
+      <!-- 퀴즈 -->
+      <section id="quiz" class="quiz">
+        <div class="lesson-head"><span class="num">📝</span><h2>기출 변형 퀴즈</h2></div>
+        <p class="exam-lead">기출 3개년의 빈출 주제·패턴을 변형한 40문항. 다 풀면 점수와 오답 해설이 나옵니다.</p>
+        <form id="quizForm"></form>
+        <div class="quiz-actions">
+          <button type="button" id="gradeBtn" class="btn primary">채점하기</button>
+          <button type="button" id="resetBtn" class="btn">다시 풀기</button>
+        </div>
+        <div id="quizResult" class="quiz-result" hidden></div>
+      </section>
+    </main>
+  </div>
+
+  <footer class="site-footer">
+    <p>컴퓨터의 이해 — 15강 학습 노트 · <a href="../">학습 노트 101</a></p>
+    <p class="muted"><a href="https://github.com/raccooncoon/html5-101" target="_blank" rel="noopener noreferrer">raccooncoon/html5-101</a> · GitHub Pages 배포</p>
+  </footer>
+
+  <a href="#top" class="to-top" id="toTop" aria-label="맨 위로">↑</a>
+
+  <script src="../assets/common.js"></script>
+  <script src="../assets/quiz-engine.js"></script>
+  <script src="quiz-data.js"></script>
+  <script src="tools.js"></script>
+</body>
+</html>
